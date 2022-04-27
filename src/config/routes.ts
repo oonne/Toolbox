@@ -5,22 +5,23 @@ interface Route {
   pageName: string;
 }
 
-/* 匹配页面 */
+/* 路由页面 */
 const pages: Route[] = [
   {
     path: '/',
-    pageName: 'PageIndex',
+    pageName: 'Index',
   },
   {
     path: '/2',
-    pageName: 'PageIndex2',
+    pageName: 'Index2',
   },
 ];
 
 /* 路由懒加载 */
-const getPage = (paggName: string) => import(`../pages/${paggName}.vue`);
+const getPage = (paggName: string) => import(`../pages/${paggName}/PageIndex.vue`);
 const routes: RouteRecordRaw[] = pages.map((route) => ({
   path: route.path,
+  name: route.pageName,
   component: getPage(route.pageName),
 }));
 
