@@ -10,6 +10,13 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'airbnb-base',
   ],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.ts', '.css'],
+      },
+    },
+  },
   parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -21,5 +28,10 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'import/extensions': ['error', 'always', {
+      js: 'never',
+      ts: 'never',
+      vue: 'never',
+    }],
   },
 };

@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <router-view />
+  <div>首页2</div>
 </template>
 
 <style>
