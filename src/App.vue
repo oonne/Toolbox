@@ -6,4 +6,6 @@
 </template>
 
 <style>
+@import './assets/css/font.css';
+@import './assets/css/reset.css';
 </style>
