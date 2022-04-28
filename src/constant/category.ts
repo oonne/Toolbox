@@ -10,12 +10,20 @@ const categoryList: Category[] = [
     en: 'All',
   },
   {
-    cn: '编码·解码',
+    cn: '编码解码',
     en: 'Encode',
   },
   {
-    cn: '哈希',
+    cn: '散列函数',
     en: 'Hash',
+  },
+  {
+    cn: '对称加密',
+    en: 'Symmetrical',
+  },
+  {
+    cn: '非对称加密',
+    en: 'Asymmetric',
   },
 ];
 
