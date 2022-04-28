@@ -3,7 +3,10 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import pages from './constant/pages';
 import App from './App.vue';
 
-/* 懒加载 */
+const app = createApp(App);
+
+/* 路由 */
+// 懒加载
 const getPage = (paggName: string) => import(`./pages/${paggName}/PageIndex.vue`);
 const routes: RouteRecordRaw[] = pages.map((route) => ({
   path: route.path,
@@ -11,15 +14,18 @@ const routes: RouteRecordRaw[] = pages.map((route) => ({
   component: getPage(route.pageName),
 }));
 
-/* 404重定向到首页 */
+// 404重定向到首页
 routes.push({
   path: '/:pathMatch(.*)*',
   redirect: '/',
 });
 
-/* 路由 */
+// 绑定页面
 const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-createApp(App).use(router).mount('#app');
+app.use(router).mount('#app');
+
+/* 全局组件 */
+// TODO

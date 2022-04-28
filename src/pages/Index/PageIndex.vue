@@ -10,7 +10,7 @@ const SetCategory = (en: string) => {
 </script>
 
 <template>
-  <div class="page">
+  <div class="index">
     <!-- 标题 -->
     <header class="logo">
       工具箱
@@ -41,10 +41,9 @@ const SetCategory = (en: string) => {
 </template>
 
 <style scoped>
-
-.page{
+.index{
   margin: auto;
-  margin-top: 16vh;
+  padding-top: 16vh;
   max-width: 768px;
 }
 
@@ -52,7 +51,7 @@ const SetCategory = (en: string) => {
   font-family: 'MFQiHei';
   font-size: 80px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
 .category-warp{
@@ -87,6 +86,9 @@ const SetCategory = (en: string) => {
 
 /* 小屏 */
 @media screen and (max-width: 800px) {
+  .index{
+    padding-top: 48px;
+  }
 }
 
 </style>
