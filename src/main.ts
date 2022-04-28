@@ -4,7 +4,7 @@ import pages from './constant/pages';
 import App from './App.vue';
 
 /* 懒加载 */
-const getPage = (paggName: string) => import(`../pages/${paggName}/PageIndex.vue`);
+const getPage = (paggName: string) => import(`./pages/${paggName}/PageIndex.vue`);
 const routes: RouteRecordRaw[] = pages.map((route) => ({
   path: route.path,
   name: route.pageName,

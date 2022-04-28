@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import categorys from '../../constant/category';
+
+/* 分类 */
+const active = ref('All');
+const SetCategory = (en: string) => {
+  active.value = en;
+};
 
 </script>
 
@@ -7,6 +15,18 @@
     <div class="logo">
       工具箱
     </div>
+
+    <ul class="category">
+      <li
+        v-for="category in categorys"
+        :key="category.en"
+        class="category-item"
+        :class="category.en===active ? 'active' : ''"
+        @click="SetCategory(category.en)"
+      >
+        {{ category.cn }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -17,8 +37,10 @@
   text-align: center;
 }
 
-/* 大屏 */
-.index{
+.category-item{
+  list-style: none;
+}
+.category-item.active{
 }
 
 /* 小屏 */
