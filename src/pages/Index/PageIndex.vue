@@ -13,11 +13,12 @@
 <style scoped>
 .logo{
   font-family: 'MFQiHei';
+  font-size: 80px;
+  text-align: center;
 }
 
 /* 大屏 */
-.logo{
-  font-size: 40px;
+.index{
 }
 
 /* 小屏 */
