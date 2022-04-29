@@ -74,7 +74,7 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
 }
 .category{
   display: flex;
-  background-color: #333;
+  background-color: var(--content-stacked-background);
   width: 768px;
 }
 .category-item{
@@ -85,15 +85,16 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
   text-align: center;
 }
 .category-en{
-  font-size: 0.9rem;
-  opacity: 0.4;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  font-weight: lighter;
 }
 .category-item.active{
-  background-color: #3f3f3f;
+  background-color: var(--content-background);
 }
 
 .feature-warp{
-  background-color: #3f3f3f;
+  background-color: var(--content-background);
   padding: 16px 24px;
   overflow: hidden;
 }

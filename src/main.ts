@@ -1,8 +1,9 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import pages from './constant/pages';
-import HeaderBar from './components/HeaderBar.vue';
 import App from './App.vue';
+import HeaderBar from './components/HeaderBar.vue';
+import ContentCard from './components/ContentCard.vue';
 
 const app = createApp(App);
 
@@ -30,3 +31,4 @@ app.use(router).mount('#app');
 
 /* 全局组件 */
 app.component('HeaderBar', HeaderBar);
+app.component('ContentCard', ContentCard);
