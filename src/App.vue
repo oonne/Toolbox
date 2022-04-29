@@ -21,6 +21,7 @@
 </template>
 
 <style>
+@import './assets/css/config.css';
 @import './assets/css/font.css';
 @import './assets/css/reset.css';
 

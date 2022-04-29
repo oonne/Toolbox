@@ -40,16 +40,14 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
 
     <!-- 功能 -->
     <div class="feature-warp">
-      <ul class="feature">
-        <li
-          v-for="item in featuresList"
-          :key="item.name"
-          class="feature-item"
-          @click="$router.push(item.name)"
-        >
-          {{ item.label }}
-        </li>
-      </ul>
+      <router-link
+        v-for="item in featuresList"
+        :key="item.name"
+        :to="{ name: item.name }"
+        class="feature-item"
+      >
+        {{ item.label }}
+      </router-link>
     </div>
   </div>
 </template>
@@ -97,12 +95,10 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
 .feature-warp{
   background-color: #3f3f3f;
   padding: 16px 24px;
-}
-.feature{
   overflow: hidden;
 }
 .feature-item{
-  list-style: none;
+  display: block;
   margin: 10px;
   width: 120px;
   height: 4rem;
@@ -111,6 +107,7 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
   background: #4f4f4f;
   color: rgb(203, 197, 29);
   text-align: center;
+  text-decoration: none;
 }
 .feature-item:hover{
   background-color: #555;

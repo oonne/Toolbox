@@ -2,6 +2,7 @@
 </script>
 
 <template>
+  <HeaderBar />
   TODO
 </template>
 

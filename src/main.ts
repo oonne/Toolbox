@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import pages from './constant/pages';
+import HeaderBar from './components/HeaderBar.vue';
 import App from './App.vue';
 
 const app = createApp(App);
@@ -28,4 +29,4 @@ const router = createRouter({
 app.use(router).mount('#app');
 
 /* 全局组件 */
-// TODO
+app.component('HeaderBar', HeaderBar);
