@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <HeaderBar />
+  <HeaderBar title="Base64编码解码" />
   TODO
 </template>
 
