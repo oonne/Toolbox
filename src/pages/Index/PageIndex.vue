@@ -45,8 +45,9 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
           v-for="item in featuresList"
           :key="item.name"
           class="feature-item"
+          @click="$router.push(item.name)"
         >
-          {{ item.name }}
+          {{ item.label }}
         </li>
       </ul>
     </div>

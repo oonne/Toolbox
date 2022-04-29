@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>首页2</div>
+  TODO
 </template>
 
 <style>

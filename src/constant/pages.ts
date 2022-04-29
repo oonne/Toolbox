@@ -10,8 +10,8 @@ const pages: Page[] = [
     pageName: 'Index',
   },
   {
-    path: '/2',
-    pageName: 'Index2',
+    path: '/base64',
+    pageName: 'Base64',
   },
 ];
 
