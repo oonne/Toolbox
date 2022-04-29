@@ -11,7 +11,6 @@ const SetCategory = (en: string) => {
 
 /* 功能 */
 const featuresList = computed(() => features.filter((f) => f.category.includes(active.value)));
-
 </script>
 
 <template>
@@ -31,7 +30,10 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
           :class="category.en===active ? 'active' : ''"
           @click="SetCategory(category.en)"
         >
-          {{ category.cn }}
+          <p>{{ category.cn }}</p>
+          <p class="category-en">
+            {{ category.en }}
+          </p>
         </li>
       </ul>
     </div>
@@ -42,6 +44,7 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
         <li
           v-for="item in featuresList"
           :key="item.name"
+          class="feature-item"
         >
           {{ item.name }}
         </li>
@@ -53,15 +56,15 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
 <style scoped>
 .index{
   margin: auto;
-  padding-top: 16vh;
+  padding-top: 3rem;
   max-width: 768px;
 }
 
 .logo{
   font-family: 'MFQiHei';
-  font-size: 80px;
+  font-size: 5rem;
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 1.5rem;
 }
 
 .category-warp{
@@ -82,22 +85,44 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
   cursor: pointer;
   text-align: center;
 }
+.category-en{
+  font-size: 0.9rem;
+  opacity: 0.4;
+}
 .category-item.active{
   background-color: #3f3f3f;
 }
 
 .feature-warp{
   background-color: #3f3f3f;
-  padding: 30px;
+  padding: 16px 24px;
 }
 .feature{
-  height: 400px;
+  overflow: hidden;
+}
+.feature-item{
+  list-style: none;
+  margin: 10px;
+  width: 120px;
+  height: 4rem;
+  line-height: 4rem;
+  cursor: pointer;
+  background: #4f4f4f;
+  color: rgb(203, 197, 29);
+  text-align: center;
+}
+.feature-item:hover{
+  background-color: #555;
+  color: rgb(203, 197, 100);
 }
 
 /* 小屏 */
 @media screen and (max-width: 800px) {
   .index{
-    padding-top: 48px;
+    padding-top: 2rem;
+  }
+  .logo{
+    font-size: 3rem;
   }
 }
 

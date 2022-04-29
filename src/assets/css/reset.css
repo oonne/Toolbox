@@ -4,6 +4,9 @@
   --color: #bdc1c6;
 }
 
+html{
+  font-size: 16px;
+}
 body{
   background: var(--background);
   color: var(--color);

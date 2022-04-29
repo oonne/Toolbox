@@ -40,6 +40,8 @@ footer{
   width: 100%;
   height: 48px;
   text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.6;
 }
 footer a{
   color: var(--color);
