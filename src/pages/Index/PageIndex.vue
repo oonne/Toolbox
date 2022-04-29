@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import categorys from '../../constant/category';
+import features from '../../constant/features';
 
 /* 分类 */
 const active = ref('All');
 const SetCategory = (en: string) => {
   active.value = en;
 };
+
+/* 功能 */
+const featuresList = computed(() => features.filter((f) => f.category.includes(active.value)));
+
 </script>
 
 <template>
@@ -34,7 +39,12 @@ const SetCategory = (en: string) => {
     <!-- 功能 -->
     <div class="feature-warp">
       <ul class="feature">
-        <li>TODO</li>
+        <li
+          v-for="item in featuresList"
+          :key="item.name"
+        >
+          {{ item.name }}
+        </li>
       </ul>
     </div>
   </div>
@@ -67,7 +77,7 @@ const SetCategory = (en: string) => {
 }
 .category-item{
   list-style: none;
-  padding: 16px 30px;
+  padding: 16px;
   width: 128px;
   cursor: pointer;
   text-align: center;
