@@ -2,18 +2,29 @@
 import { ref } from 'vue';
 
 const input = ref('');
+const output = ref('');
+
+/* 解码 */
+const onDecode = () => {
+  output.value = input.value;
+};
+
 </script>
 
 <template>
   <div class="input-warp">
     <TextInput v-model:text="input" />
     <TextInput
-      text=""
+      :text="output"
       readonly
     />
   </div>
   <div class="button-warp">
-    <ConfirmButton text="解码" />
+    <ConfirmButton
+      text="解码"
+      :disable="input===''"
+      @click="onDecode"
+    />
   </div>
 </template>
 
