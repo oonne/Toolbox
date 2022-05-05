@@ -20,7 +20,7 @@ const onClick = () => {
     :class="disable ? 'disable' : ''"
     @click="onClick"
   >
-    {{ props.text }}
+    {{ text }}
   </div>
 </template>
 

@@ -16,7 +16,7 @@ const refer: Link[] = [
 <template>
   <ContentCard>
     <h2>简介</h2>
-    <p>Base64 把 <b>二进制数据</b> 编码为 <b>可见字符传输</b> 。</p>
+    <p>Base64用于将 <b>二进制数据</b> 编码为 <b>可见字符传输</b> 。</p>
     <br>
 
     <h2>参考文献</h2>

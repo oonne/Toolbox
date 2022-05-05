@@ -4,29 +4,85 @@ const props = defineProps<{
   readonly?: boolean;
 }>();
 
-defineEmits(['update:text']);
+const emit = defineEmits(['update:text']);
+
+// 复制
+const copy = async () => {
+  await navigator.clipboard.writeText(props.text);
+};
+// 粘贴
+const paste = async () => {
+  const text = await navigator.clipboard.readText();
+  emit('update:text', text);
+};
+// 清空
+const clear = () => {
+  emit('update:text', '');
+};
+
 </script>
 
 <template>
-  <textarea
-    class="textarea"
-    :value="props.text"
-    :readonly="readonly"
-    @input="$emit('update:text', ($event.target as HTMLTextAreaElement).value)"
-  />
+  <div class="textarea-warp">
+    <textarea
+      class="textarea"
+      :value="text"
+      :readonly="readonly"
+      @input="$emit('update:text', ($event.target as HTMLTextAreaElement).value)"
+    />
+    <div class="button-list">
+      <span
+        class="button"
+        @click="copy"
+      >复制</span>
+      <span
+        v-if="!readonly"
+        class="button"
+        @click="paste"
+      >粘贴</span>
+      <span
+        v-if="!readonly"
+        class="button"
+        @click="clear"
+      >清空</span>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.textarea{
+.textarea-warp{
+  position: relative;
   flex-grow: 1;
-  min-height: 10rem;
   min-width: 16rem;
   margin: 8px;
+  background: var(--input-background);
+}
+.textarea{
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  box-sizing: border-box;
+  resize: vertical;
   overflow: auto;
   border: none;
   outline: none;
-  padding: 16px;
+  padding: 1rem;
+  padding-bottom: 3rem;
   background: var(--input-background);
   color: var(--color);
+}
+
+.button-list{
+  position: absolute;
+  display: flex;
+  bottom: 10px;
+  right: 10px;
+}
+.button{
+  background-color: #999;
+  margin: 8px;
+  padding: 2px 6px;
+  color: #fff;
+  cursor: pointer;
 }
 </style>

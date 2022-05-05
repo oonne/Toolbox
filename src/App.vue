@@ -47,6 +47,6 @@ footer{
 footer a{
   color: var(--color);
   text-decoration: none;
-  margin: 0px 24px 0 8px;
+  margin: 0 24px 0 8px;
 }
 </style>
