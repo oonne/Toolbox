@@ -4,6 +4,8 @@
   --background: #202124;
   /* 默认字体颜色 */
   --color: #bdc1c6;
+  /* 默认输入框 */
+  --input-background: #666;
   
   /* 功能页首底色 */
   --header-background: #101114;
