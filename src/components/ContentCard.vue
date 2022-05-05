@@ -9,6 +9,7 @@
 
 <style scoped>
 .content-card{
+  box-sizing: border-box;
   max-width: var(--content-max-width);
   background:  var(--content-background);
   margin: 16px auto;

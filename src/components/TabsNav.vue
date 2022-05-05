@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
 import type { Tab } from '../types/type';
 
 const props = defineProps<{
@@ -6,16 +7,69 @@ const props = defineProps<{
   default: string;
 }>();
 
-console.log(props);
+/* 导航栏 */
+const active = ref(props.default);
+const SelectTab = (key: string) => {
+  active.value = key;
+};
 
-/* 分类 */
+const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.value));
 </script>
 
 <template>
-  <div>
-    TODO
+  <div class="content-card">
+    <!-- 筛选 -->
+    <div class="tabs-warp">
+      <ul class="tabs">
+        <li
+          v-for="tab in props.tabs"
+          :key="tab.key"
+          class="tab-item"
+          :class="tab.key===active ? 'active' : ''"
+          @click="SelectTab(tab.key)"
+        >
+          <p>{{ tab.name }}</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 组件 -->
+    <div class="content-page">
+      <component :is="activeTab?.component" />
+    </div>
   </div>
 </template>
 
 <style scoped>
+.content-card{
+  max-width: var(--content-max-width);
+  background:  var(--content-background);
+  margin: 16px auto;
+}
+
+.tabs-warp{
+  overflow: auto;
+}
+.tabs-warp::-webkit-scrollbar {
+  display: none;
+}
+.tabs{
+  display: flex;
+  background-color: var(--content-stacked-background);
+}
+.tab-item{
+  list-style: none;
+  padding: 16px;
+  width: 128px;
+  cursor: pointer;
+  text-align: center;
+}
+.tab-item.active{
+  background-color: var(--content-background);
+}
+
+.content-page{
+  padding: 16px 24px;
+}
+
 </style>

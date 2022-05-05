@@ -6,10 +6,12 @@ import type { Tab } from '../../types/type';
 
 const tabs: Tab[] = [
   {
+    key: 'decode',
     name: '解码',
     component: DecodeCard,
   },
   {
+    key: 'encode',
     name: '编码',
     component: EncodeCard,
   },
@@ -20,12 +22,10 @@ const tabs: Tab[] = [
   <HeaderBar title="Base64编码解码" />
 
   <!-- 功能 -->
-  <ContentCard>
-    <TabsNav
-      default="decode"
-      :tabs="tabs"
-    />
-  </ContentCard>
+  <TabsNav
+    default="decode"
+    :tabs="tabs"
+  />
 
   <!-- 简介 -->
   <IntroCard />
