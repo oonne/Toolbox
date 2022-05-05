@@ -2,7 +2,6 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import pages from './constant/pages';
 import App from './App.vue';
-import BlankSpace from './components/BlankSpace.vue';
 import HeaderBar from './components/HeaderBar.vue';
 import ContentCard from './components/ContentCard.vue';
 import TabsNav from './components/TabsNav.vue';
@@ -34,7 +33,6 @@ const router = createRouter({
 app.use(router).mount('#app');
 
 /* 全局组件 */
-app.component('BlankSpace', BlankSpace);
 app.component('HeaderBar', HeaderBar);
 app.component('ContentCard', ContentCard);
 app.component('TabsNav', TabsNav);

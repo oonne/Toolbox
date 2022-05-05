@@ -69,7 +69,8 @@ const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.val
 }
 
 .content-page{
-  padding: 16px 24px;
+  padding: 16px;
+  overflow: auto;
 }
 
 </style>

@@ -20,6 +20,8 @@ defineEmits(['update:text']);
 .textarea{
   flex-grow: 1;
   min-height: 10rem;
+  min-width: 16rem;
+  margin: 8px;
   overflow: auto;
   border: none;
   outline: none;

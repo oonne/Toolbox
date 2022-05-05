@@ -7,14 +7,12 @@ const input = ref('');
 <template>
   <div class="input-warp">
     <TextInput v-model:text="input" />
-    <BlankSpace />
     <TextInput
       text=""
       readonly
     />
   </div>
   <div class="button-warp">
-    <BlankSpace />
     <ConfirmButton text="解码" />
   </div>
 </template>
@@ -23,12 +21,12 @@ const input = ref('');
 .input-warp{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
+  flex-flow: wrap;
 }
 
 .button-warp{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 </style>
