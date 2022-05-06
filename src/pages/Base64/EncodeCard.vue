@@ -9,7 +9,6 @@ const output = ref('');
 const onDecode = () => {
   output.value = enc.Base64.stringify(enc.Utf8.parse(input.value));
 };
-
 </script>
 
 <template>

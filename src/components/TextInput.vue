@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import message from './message';
+
 const props = defineProps<{
   text: string;
   readonly?: boolean;
@@ -9,6 +11,7 @@ const emit = defineEmits(['update:text']);
 // 复制
 const copy = async () => {
   await navigator.clipboard.writeText(props.text);
+  message('已复制');
 };
 // 粘贴
 const paste = async () => {
@@ -19,7 +22,6 @@ const paste = async () => {
 const clear = () => {
   emit('update:text', '');
 };
-
 </script>
 
 <template>

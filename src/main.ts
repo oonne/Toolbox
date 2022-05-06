@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import pages from './constant/pages';
 import App from './App.vue';
+
 import HeaderBar from './components/HeaderBar.vue';
 import ContentCard from './components/ContentCard.vue';
 import TabsNav from './components/TabsNav.vue';
