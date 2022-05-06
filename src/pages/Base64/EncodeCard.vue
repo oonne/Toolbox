@@ -5,8 +5,8 @@ import { enc } from 'crypto-js';
 const input = ref('');
 const output = ref('');
 
-/* 解码 */
-const onDecode = () => {
+/* 编码 */
+const onEncode = () => {
   output.value = enc.Base64.stringify(enc.Utf8.parse(input.value));
 };
 </script>
@@ -23,7 +23,7 @@ const onDecode = () => {
     <ConfirmButton
       text="编码"
       :disable="input===''"
-      @click="onDecode"
+      @click="onEncode"
     />
   </div>
 </template>

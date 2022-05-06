@@ -2,6 +2,7 @@
 import IntroCard from './IntroCard.vue';
 import DecodeCard from './DecodeCard.vue';
 import EncodeCard from './EncodeCard.vue';
+import EncodeFileCard from './EncodeFileCard.vue';
 import type { Tab } from '../../types/type';
 
 const tabs: Tab[] = [
@@ -14,6 +15,11 @@ const tabs: Tab[] = [
     key: 'encode',
     name: '编码',
     component: EncodeCard,
+  },
+  {
+    key: 'dataurl',
+    name: '文件转DataUrl',
+    component: EncodeFileCard,
   },
 ];
 </script>

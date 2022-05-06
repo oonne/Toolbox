@@ -1,5 +1,9 @@
 import { defineComponent } from 'vue';
 
+export interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}
+
 /* 导航栏 */
 export interface Tab {
   key: string;
