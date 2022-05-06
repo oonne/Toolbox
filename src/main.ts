@@ -17,7 +17,7 @@ const getPage = (paggName: string) => import(`./pages/${paggName}/IndexPage.vue`
 const routes: RouteRecordRaw[] = pages.map((route) => ({
   path: route.path,
   name: route.pageName,
-  component: getPage(route.pageName),
+  component: getPage.bind(this, route.pageName),
 }));
 
 // 404重定向到首页
