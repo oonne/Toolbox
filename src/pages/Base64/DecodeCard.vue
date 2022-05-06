@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { enc } from 'crypto-js';
+import message from '../../components/message';
 
 const input = ref('');
 const output = ref('');
 
 /* 解码 */
 const onDecode = () => {
-  output.value = enc.Utf8.stringify(enc.Base64.parse(input.value));
+  let string = '';
+  try {
+    string = enc.Utf8.stringify(enc.Base64.parse(input.value));
+  } catch (e) {
+    message('解码失败');
+  }
+  output.value = string;
 };
 
 </script>
