@@ -19,7 +19,7 @@ const parse = async (file: Blob) => {
 
 <template>
   <FileInput
-    placeholder="拖拽文件到此处（仅限png格式）"
+    placeholder="拖拽图片到此处（仅限png格式）"
     @change="parse"
   />
 

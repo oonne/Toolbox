@@ -21,10 +21,10 @@ const categoryList: Category[] = [
   //   cn: '对称加密',
   //   en: 'Symmetrical',
   // },
-  // {
-  //   cn: '非对称加密',
-  //   en: 'Asymmetric',
-  // },
+  {
+    cn: '非对称加密',
+    en: 'Asymmetric',
+  },
 ];
 
 export default categoryList;
