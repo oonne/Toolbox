@@ -1,46 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import qrcodeParser from 'qrcode-parser';
-import { HTMLInputEvent } from '../../types/type';
 
 const output = ref('');
 
-/* 文件选择 */
-const onFileChange = async (event: Event) => {
-  if (!event.target) {
-    return;
-  }
+/* 解析二维码 */
+const parse = async (file: Blob) => {
   output.value = '解析中...';
 
-  output.value = await (qrcodeParser(((event as HTMLInputEvent).target.files as FileList)[0]));
+  output.value = await (qrcodeParser(file));
 };
-
-/* 文件拖拽 */
-window.addEventListener('dragenter', (event) => { event.preventDefault(); }, false);
-window.addEventListener('dragleave', (event) => { event.preventDefault(); }, false);
-window.addEventListener('dragover', (event) => { event.preventDefault(); }, false);
-window.addEventListener('drop', async (event) => {
-  if (!event.dataTransfer) {
-    return;
-  }
-  output.value = '解析中...';
-
-  event.preventDefault();
-  output.value = await (qrcodeParser(event.dataTransfer.files[0]));
-}, false);
 </script>
 
 <template>
-  <label
-    class="drop"
-  >
-    拖拽文件到此处
-    <input
-      v-show="false"
-      type="file"
-      @change="onFileChange"
-    >
-  </label>
+  <FileInput @change="parse" />
 
   <TextInput
     v-show="!!output"

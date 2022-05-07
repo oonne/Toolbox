@@ -8,6 +8,7 @@ import ContentCard from './components/ContentCard.vue';
 import TabsNav from './components/TabsNav.vue';
 import ConfirmButton from './components/ConfirmButton.vue';
 import TextInput from './components/TextInput.vue';
+import FileInput from './components/FileInput.vue';
 
 const app = createApp(App);
 
@@ -39,3 +40,4 @@ app.component('ContentCard', ContentCard);
 app.component('TabsNav', TabsNav);
 app.component('ConfirmButton', ConfirmButton);
 app.component('TextInput', TextInput);
+app.component('FileInput', FileInput);
