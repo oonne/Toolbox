@@ -62,7 +62,7 @@ const clear = () => {
 .textarea{
   width: 100%;
   height: 100%;
-  min-height: 12rem;
+  min-height: 14rem;
   box-sizing: border-box;
   resize: vertical;
   overflow: auto;

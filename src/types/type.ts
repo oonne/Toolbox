@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue';
 
+export type Timer = ReturnType<typeof setTimeout> | null;
 export interface HTMLInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
