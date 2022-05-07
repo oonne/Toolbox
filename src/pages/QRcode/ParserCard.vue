@@ -6,14 +6,22 @@ const output = ref('');
 
 /* 解析二维码 */
 const parse = async (file: Blob) => {
+  if (file.type !== 'image/png') {
+    output.value = '仅支持png格式的图片';
+    return;
+  }
+
   output.value = '解析中...';
 
-  output.value = await (qrcodeParser(file));
+  output.value = await qrcodeParser(file);
 };
 </script>
 
 <template>
-  <FileInput @change="parse" />
+  <FileInput
+    placeholder="拖拽文件到此处（仅限png格式）"
+    @change="parse"
+  />
 
   <TextInput
     v-show="!!output"

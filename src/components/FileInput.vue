@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { HTMLInputEvent } from '../types/type';
 
+defineProps({
+  placeholder: {
+    type: String,
+    required: false,
+    default: '拖拽文件到此处',
+  },
+});
+
 const emit = defineEmits(['change']);
 
 /* 文件选择 */
@@ -30,7 +38,7 @@ window.addEventListener('drop', (event) => {
   <label
     class="drop"
   >
-    拖拽文件到此处
+    {{ placeholder }}
     <input
       v-show="false"
       type="file"
