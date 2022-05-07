@@ -13,18 +13,18 @@ const categoryList: Category[] = [
     cn: '编码解码',
     en: 'Encode',
   },
-  {
-    cn: '散列函数',
-    en: 'Hash',
-  },
-  {
-    cn: '对称加密',
-    en: 'Symmetrical',
-  },
-  {
-    cn: '非对称加密',
-    en: 'Asymmetric',
-  },
+  // {
+  //   cn: '散列函数',
+  //   en: 'Hash',
+  // },
+  // {
+  //   cn: '对称加密',
+  //   en: 'Symmetrical',
+  // },
+  // {
+  //   cn: '非对称加密',
+  //   en: 'Asymmetric',
+  // },
 ];
 
 export default categoryList;

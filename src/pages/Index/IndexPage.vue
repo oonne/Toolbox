@@ -94,6 +94,8 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
 }
 
 .feature-warp{
+  display: flex;
+  flex-wrap: wrap;
   background-color: var(--content-background);
   padding: 16px 24px;
   overflow: hidden;

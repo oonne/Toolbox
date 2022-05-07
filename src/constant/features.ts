@@ -11,6 +11,11 @@ const featuresList: Features[] = [
     label: 'Base64',
     category: ['All', 'Encode'],
   },
+  {
+    name: 'QRcode',
+    label: '二维码',
+    category: ['All', 'Encode'],
+  },
 ];
 
 export default featuresList;
