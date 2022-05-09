@@ -16,3 +16,14 @@
   /* 功能页最大宽度 */
   --content-max-width: 1060px;
 }
+
+/* 颜色 */
+.safe{
+  color: #52c41a;
+}
+.warning{
+  color: #faad14;
+}
+.danger{
+  color: #cf1322;
+}

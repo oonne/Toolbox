@@ -28,4 +28,16 @@
   margin-left: 0;
   padding-left: 1.2rem;
 }
+
+/* 简介表格 */
+.content-card:deep() table {
+  border: 2px solid var(--color);
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+.content-card:deep() th, .content-card:deep() td {
+  border: 1px solid var(--color);
+  padding: 0.5rem 1rem;
+}
+
 </style>
