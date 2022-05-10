@@ -8,7 +8,6 @@ const output = ref('');
 
 /* 解码 */
 const onDecode = () => {
-  // JSEncrypt.
   output.value = '解密中...';
 
   const decrypt = new JSEncrypt();
@@ -17,6 +16,7 @@ const onDecode = () => {
 
   if (!uncrypted) {
     output.value = '解密失败';
+    return;
   }
   output.value = uncrypted as string;
 };
@@ -26,7 +26,7 @@ const onDecode = () => {
 <template>
   <TextInput
     v-model:text="privkey"
-    input-style="{{minHeight: '10rem'}}"
+    min-height="10rem"
     placeholder="私钥"
   />
   <TextInput

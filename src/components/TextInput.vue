@@ -17,10 +17,10 @@ const props = defineProps({
     required: false,
     default: false,
   },
-  inputStyle: {
-    type: Object,
+  minHeight: {
+    type: String,
     required: false,
-    default: () => ({ minHeight: '14rem' }),
+    default: '14rem',
   },
 });
 
@@ -46,7 +46,7 @@ const clear = () => {
   <div class="textarea-warp">
     <textarea
       class="textarea"
-      :style="inputStyle"
+      :style="`min-height: ${minHeight}`"
       :value="text"
       :readonly="readonly"
       :placeholder="placeholder"
