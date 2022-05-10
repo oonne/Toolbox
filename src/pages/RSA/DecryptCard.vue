@@ -25,12 +25,12 @@ const onDecode = () => {
 
 <template>
   <TextInput
-    v-model:text="privkey"
+    v-model:text.lazy="privkey"
     min-height="10rem"
     placeholder="私钥"
   />
   <TextInput
-    v-model:text="input"
+    v-model:text.lazy="input"
     placeholder="密文"
   />
   <TextInput
@@ -49,7 +49,6 @@ const onDecode = () => {
 </template>
 
 <style scoped>
-
 .button-warp{
   display: flex;
   justify-content: flex-end;

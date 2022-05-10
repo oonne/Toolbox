@@ -14,7 +14,7 @@ const onEncode = () => {
 <template>
   <div class="input-warp">
     <TextInput
-      v-model:text="input"
+      v-model:text.lazy="input"
       placeholder="编码前"
     />
     <TextInput

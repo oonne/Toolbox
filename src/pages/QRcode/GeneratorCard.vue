@@ -26,7 +26,7 @@ watch(input, Utils.debounce((text: string) => {
 
 <template>
   <div class="qrcode-warp">
-    <TextInput v-model:text="input" />
+    <TextInput v-model:text.lazy="input" />
     <div
       v-show="!!input"
       class="qrcode"

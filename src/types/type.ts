@@ -17,3 +17,10 @@ export interface Link {
   href: string;
   text: string;
 }
+
+/* 下拉框 */
+export interface SelectOption {
+  value: string | number;
+  name: string;
+  selected?: boolean;
+}

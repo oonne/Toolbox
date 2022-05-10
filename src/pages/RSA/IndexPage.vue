@@ -2,6 +2,7 @@
 import IntroCard from './IntroCard.vue';
 import DecryptCard from './DecryptCard.vue';
 import EncryptCard from './EncryptCard.vue';
+import GenerateKeyCard from './GenerateKeyCard.vue';
 import type { Tab } from '../../types/type';
 
 const tabs: Tab[] = [
@@ -15,6 +16,11 @@ const tabs: Tab[] = [
     name: '加密',
     component: EncryptCard,
   },
+  {
+    key: 'generator',
+    name: '生成秘钥对',
+    component: GenerateKeyCard,
+  },
 ];
 </script>
 
@@ -23,7 +29,7 @@ const tabs: Tab[] = [
 
   <!-- 功能 -->
   <TabsNav
-    default="decrypt"
+    default="generator"
     :tabs="tabs"
   />
 
