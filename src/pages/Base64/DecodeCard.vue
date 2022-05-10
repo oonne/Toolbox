@@ -21,9 +21,13 @@ const onDecode = () => {
 
 <template>
   <div class="input-warp">
-    <TextInput v-model:text="input" />
+    <TextInput
+      v-model:text="input"
+      placeholder="解码前"
+    />
     <TextInput
       :text="output"
+      placeholder="解码后"
       readonly
     />
   </div>

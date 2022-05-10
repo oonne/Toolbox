@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import IntroCard from './IntroCard.vue';
-import DecodeCard from './DecodeCard.vue';
-import EncodeCard from './EncodeCard.vue';
+import DecryptCard from './DecryptCard.vue';
+import EncryptCard from './EncryptCard.vue';
 import type { Tab } from '../../types/type';
 
 const tabs: Tab[] = [
   {
-    key: 'decode',
-    name: '解码',
-    component: DecodeCard,
+    key: 'decrypt',
+    name: '解密',
+    component: DecryptCard,
   },
   {
-    key: 'encode',
-    name: '编码',
-    component: EncodeCard,
+    key: 'encrypt',
+    name: '加密',
+    component: EncryptCard,
   },
 ];
 </script>
@@ -23,7 +23,7 @@ const tabs: Tab[] = [
 
   <!-- 功能 -->
   <TabsNav
-    default="decode"
+    default="decrypt"
     :tabs="tabs"
   />
 
