@@ -31,7 +31,7 @@ defineEmits(['update:selected']);
 
 <style scoped>
 .select-warp{
-  margin: 8px 24px;
+  margin: 8px 12px 8px 24px;
 }
 label{
   padding: 12px 0;
