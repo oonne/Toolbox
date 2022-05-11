@@ -6,13 +6,13 @@ const pubkey = ref('');
 const input = ref('');
 const output = ref('');
 
-/* 解码 */
-const onDecode = () => {
+/* 加密 */
+const onEncrypt = () => {
   output.value = '加密中...';
 
-  const decrypt = new JSEncrypt();
-  decrypt.setPublicKey(pubkey.value);
-  const uncrypted = decrypt.encrypt(input.value);
+  const encrypt = new JSEncrypt();
+  encrypt.setPublicKey(pubkey.value);
+  const uncrypted = encrypt.encrypt(input.value);
 
   if (!uncrypted) {
     output.value = '加密失败';
@@ -43,7 +43,7 @@ const onDecode = () => {
     <ConfirmButton
       text="加密"
       :disable="input==='' || pubkey===''"
-      @click="onDecode"
+      @click="onEncrypt"
     />
   </div>
 </template>

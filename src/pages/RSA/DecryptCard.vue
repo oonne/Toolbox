@@ -6,13 +6,13 @@ const privkey = ref('');
 const input = ref('');
 const output = ref('');
 
-/* 解码 */
-const onDecode = () => {
+/* 解密 */
+const onDecrypt = () => {
   output.value = '解密中...';
 
-  const decrypt = new JSEncrypt();
-  decrypt.setPrivateKey(privkey.value);
-  const uncrypted = decrypt.decrypt(input.value);
+  const encrypt = new JSEncrypt();
+  encrypt.setPrivateKey(privkey.value);
+  const uncrypted = encrypt.decrypt(input.value);
 
   if (!uncrypted) {
     output.value = '解密失败';
@@ -43,7 +43,7 @@ const onDecode = () => {
     <ConfirmButton
       text="解密"
       :disable="input==='' || privkey===''"
-      @click="onDecode"
+      @click="onDecrypt"
     />
   </div>
 </template>

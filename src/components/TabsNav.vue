@@ -35,7 +35,9 @@ const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.val
 
     <!-- 组件 -->
     <div class="content-page">
-      <component :is="activeTab?.component" />
+      <keep-alive>
+        <component :is="activeTab?.component" />
+      </keep-alive>
     </div>
   </div>
 </template>
