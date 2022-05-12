@@ -14,12 +14,16 @@ const pages: Page[] = [
     pageName: 'Base64',
   },
   {
-    path: '/rsa',
-    pageName: 'RSA',
-  },
-  {
     path: '/qrcode',
     pageName: 'QRcode',
+  },
+  {
+    path: '/md5',
+    pageName: 'MD5',
+  },
+  {
+    path: '/rsa',
+    pageName: 'RSA',
   },
 ];
 

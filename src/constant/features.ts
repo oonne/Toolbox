@@ -12,14 +12,19 @@ const featuresList: Features[] = [
     category: ['All', 'Encode'],
   },
   {
-    name: 'RSA',
-    label: 'RSA',
-    category: ['All', 'Asymmetric'],
-  },
-  {
     name: 'QRcode',
     label: '二维码',
     category: ['All', 'Encode'],
+  },
+  {
+    name: 'MD5',
+    label: 'MD5',
+    category: ['All', 'Hash'],
+  },
+  {
+    name: 'RSA',
+    label: 'RSA',
+    category: ['All', 'Asymmetric'],
   },
 ];
 
