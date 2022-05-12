@@ -26,7 +26,7 @@ const onEncrypt = () => {
 <template>
   <TextInput
     v-model:text.lazy="pubkey"
-    min-height="10rem"
+    text-area-class="min-height-10"
     placeholder="公钥"
   />
   <TextInput

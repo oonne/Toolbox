@@ -15,15 +15,21 @@
   --content-stacked-background: #303134;
   /* 功能页最大宽度 */
   --content-max-width: 1060px;
+
+
+  /* 颜色 */
+  --safe-color: #52c41a;
+  --warning-color: #faad14;
+  --danger-color: #cf1322;
 }
 
 /* 颜色 */
 .safe{
-  color: #52c41a;
+  color: var(--safe-color);
 }
 .warning{
-  color: #faad14;
+  color: var(--warning-color);
 }
 .danger{
-  color: #cf1322;
+  color: var(--danger-color);
 }

@@ -17,10 +17,10 @@ const props = defineProps({
     required: false,
     default: false,
   },
-  minHeight: {
+  textAreaClass: {
     type: String,
     required: false,
-    default: '14rem',
+    default: '',
   },
 });
 
@@ -46,7 +46,7 @@ const clear = () => {
   <div class="textarea-warp">
     <textarea
       class="textarea"
-      :style="`min-height: ${minHeight}`"
+      :class="textAreaClass"
       :value="text"
       :readonly="readonly"
       :placeholder="placeholder"
@@ -83,6 +83,7 @@ const clear = () => {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  min-height: 14rem;
   resize: vertical;
   overflow: auto;
   border: none;
@@ -108,5 +109,16 @@ const clear = () => {
   padding: 2px 6px;
   color: #fff;
   cursor: pointer;
+}
+
+/* textAreaClass的CSS属性 */
+.min-height-10{
+  min-height: 10rem;
+}
+.success{
+  color: var(--safe-color);
+}
+.failed{
+  color: var(--danger-color);
 }
 </style>

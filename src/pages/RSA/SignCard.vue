@@ -1,24 +1,26 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { JSEncrypt } from 'jsencrypt';
+import CryptoJS from 'crypto-js';
+import { HashFun } from '../../types/type';
 
 const privkey = ref('');
 const input = ref('');
 const output = ref('');
 
-/* 解密 */
-const onDecrypt = () => {
-  output.value = '解密中...';
+/* 签名 */
+const onSign = () => {
+  output.value = '签名中...';
 
   const encrypt = new JSEncrypt();
   encrypt.setPrivateKey(privkey.value);
-  const uncrypted = encrypt.decrypt(input.value);
+  const sign = encrypt.sign(input.value, CryptoJS.SHA256 as unknown as HashFun, 'sha256');
 
-  if (!uncrypted) {
-    output.value = '解密失败';
+  if (!sign) {
+    output.value = '签名失败';
     return;
   }
-  output.value = uncrypted as string;
+  output.value = sign as string;
 };
 
 </script>
@@ -31,19 +33,19 @@ const onDecrypt = () => {
   />
   <TextInput
     v-model:text.lazy="input"
-    placeholder="密文"
+    placeholder="内容"
   />
   <TextInput
     v-if="!!output"
-    placeholder="明文"
+    placeholder="签名"
     :text="output"
     readonly
   />
   <div class="button-warp">
     <ConfirmButton
-      text="解密"
+      text="签名"
       :disable="input==='' || privkey===''"
-      @click="onDecrypt"
+      @click="onSign"
     />
   </div>
 </template>

@@ -6,6 +6,10 @@ export interface HTMLInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
 
+// JSEncrypt用的 签名/校验 哈希算法
+// eslint-disable-next-line no-unused-vars
+export type HashFun = (str: string) => string;
+
 /* 导航栏 */
 export interface Tab {
   key: string;

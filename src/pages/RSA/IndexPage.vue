@@ -3,6 +3,8 @@ import IntroCard from './IntroCard.vue';
 import GenerateKeyCard from './GenerateKeyCard.vue';
 import DecryptCard from './DecryptCard.vue';
 import EncryptCard from './EncryptCard.vue';
+import SignCard from './SignCard.vue';
+import VerifyCard from './VerifyCard.vue';
 import type { Tab } from '../../types/type';
 
 const tabs: Tab[] = [
@@ -21,6 +23,16 @@ const tabs: Tab[] = [
     name: '加密',
     component: EncryptCard,
   },
+  {
+    key: 'sign',
+    name: '签名',
+    component: SignCard,
+  },
+  {
+    key: 'verify',
+    name: '校验',
+    component: VerifyCard,
+  },
 ];
 </script>
 
@@ -29,7 +41,7 @@ const tabs: Tab[] = [
 
   <!-- 功能 -->
   <TabsNav
-    default="decrypt"
+    default="sign"
     :tabs="tabs"
   />
 
