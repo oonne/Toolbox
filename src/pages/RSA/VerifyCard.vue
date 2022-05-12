@@ -2,9 +2,34 @@
 import { ref } from 'vue';
 import { JSEncrypt } from 'jsencrypt';
 import CryptoJS from 'crypto-js';
-import { HashFun } from '../../types/type';
 import message from '../../components/message';
+import type { SelectOption, RSAHashFun, RSAHashMethod } from '../../types/type';
 
+/* 哈希算法 */
+const hashSelectOptions: SelectOption[] = [
+  {
+    value: 'MD5',
+    name: 'MD5',
+  },
+  {
+    value: 'SHA1',
+    name: 'SHA1',
+  },
+  {
+    value: 'SHA256',
+    name: 'SHA256',
+  },
+  {
+    value: 'SHA512',
+    name: 'SHA512',
+  },
+  {
+    value: 'RIPEMD160',
+    name: 'ripemd160',
+  },
+];
+
+const hashMethod = ref('SHA512');
 const pubkey = ref('');
 const input = ref('');
 const output = ref('');
@@ -15,7 +40,11 @@ const result = ref('');
 const onVerify = () => {
   const encrypt = new JSEncrypt();
   encrypt.setPublicKey(pubkey.value);
-  const verify = encrypt.verify(input.value, output.value, CryptoJS.SHA256 as unknown as HashFun);
+  const verify = encrypt.verify(
+    input.value,
+    output.value,
+    CryptoJS[hashMethod.value as RSAHashMethod] as unknown as RSAHashFun,
+  );
 
   // 正确
   if (verify) {
@@ -48,6 +77,11 @@ const onVerify = () => {
     placeholder="签名"
   />
   <div class="button-warp">
+    <SelectInput
+      v-model:selected="hashMethod"
+      label="哈希算法"
+      :options="hashSelectOptions"
+    />
     <ConfirmButton
       text="校验"
       :disable="pubkey==='' || input==='' || output===''"

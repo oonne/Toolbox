@@ -8,7 +8,8 @@ export interface HTMLInputEvent extends Event {
 
 // JSEncrypt用的 签名/校验 哈希算法
 // eslint-disable-next-line no-unused-vars
-export type HashFun = (str: string) => string;
+export type RSAHashFun = (str: string) => string;
+export type RSAHashMethod = 'MD5' | 'SHA1' | 'SHA256' | 'SHA512' | 'RIPEMD160';
 
 /* 导航栏 */
 export interface Tab {

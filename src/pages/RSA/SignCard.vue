@@ -2,8 +2,33 @@
 import { ref } from 'vue';
 import { JSEncrypt } from 'jsencrypt';
 import CryptoJS from 'crypto-js';
-import { HashFun } from '../../types/type';
+import type { SelectOption, RSAHashFun, RSAHashMethod } from '../../types/type';
 
+/* 哈希算法 */
+const hashSelectOptions: SelectOption[] = [
+  {
+    value: 'MD5',
+    name: 'MD5',
+  },
+  {
+    value: 'SHA1',
+    name: 'SHA1',
+  },
+  {
+    value: 'SHA256',
+    name: 'SHA256',
+  },
+  {
+    value: 'SHA512',
+    name: 'SHA512',
+  },
+  {
+    value: 'RIPEMD160',
+    name: 'ripemd160',
+  },
+];
+
+const hashMethod = ref('SHA512');
 const privkey = ref('');
 const input = ref('');
 const output = ref('');
@@ -14,7 +39,11 @@ const onSign = () => {
 
   const encrypt = new JSEncrypt();
   encrypt.setPrivateKey(privkey.value);
-  const sign = encrypt.sign(input.value, CryptoJS.SHA256 as unknown as HashFun, 'sha256');
+  const sign = encrypt.sign(
+    input.value,
+    CryptoJS[hashMethod.value as RSAHashMethod] as unknown as RSAHashFun,
+    hashMethod.value,
+  );
 
   if (!sign) {
     output.value = '签名失败';
@@ -42,6 +71,11 @@ const onSign = () => {
     readonly
   />
   <div class="button-warp">
+    <SelectInput
+      v-model:selected="hashMethod"
+      label="哈希算法"
+      :options="hashSelectOptions"
+    />
     <ConfirmButton
       text="签名"
       :disable="input==='' || privkey===''"
