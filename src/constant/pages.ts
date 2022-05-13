@@ -22,6 +22,10 @@ const pages: Page[] = [
     pageName: 'MD5',
   },
   {
+    path: '/sha2',
+    pageName: 'SHA2',
+  },
+  {
     path: '/rsa',
     pageName: 'RSA',
   },
