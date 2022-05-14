@@ -17,10 +17,10 @@ const categoryList: Category[] = [
     cn: '散列函数',
     en: 'Hash',
   },
-  // {
-  //   cn: '对称加密',
-  //   en: 'Symmetrical',
-  // },
+  {
+    cn: '对称加密',
+    en: 'Symmetrical',
+  },
   {
     cn: '非对称加密',
     en: 'Asymmetric',

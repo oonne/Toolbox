@@ -27,7 +27,10 @@ const method = ref('sha3_512');
 const input = ref('');
 const output = ref('');
 
-/* 计算 */
+/*
+ * 计算
+ * 由于 crypto-js 的 sha3 函数，实际上是 Keccak算法 ，计算结果与SHA3不同，因此使用js-sha3来计算
+ */
 type HashMethod = 'sha3_224' | 'sha3_256' | 'sha3_384' | 'sha3_512';
 const onCalc = () => {
   output.value = SHA3[method.value as HashMethod](input.value);

@@ -25,7 +25,7 @@ const tabs: Tab[] = [
 </script>
 
 <template>
-  <HeaderBar title="Base64编码解码" />
+  <HeaderBar title="Base64 编码解码" />
 
   <!-- 功能 -->
   <TabsNav

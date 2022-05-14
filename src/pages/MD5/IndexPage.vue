@@ -4,7 +4,7 @@ import CalcCard from './CalcCard.vue';
 </script>
 
 <template>
-  <HeaderBar title="MD5" />
+  <HeaderBar title="MD5 单向散列函数" />
 
   <!-- 功能 -->
   <ContentCard>

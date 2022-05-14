@@ -20,7 +20,7 @@ const tabs: Tab[] = [
 </script>
 
 <template>
-  <HeaderBar title="SHA" />
+  <HeaderBar title="SHA 单向散列函数" />
 
   <!-- 功能 -->
   <TabsNav

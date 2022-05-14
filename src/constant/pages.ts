@@ -26,6 +26,10 @@ const pages: Page[] = [
     pageName: 'SHA',
   },
   {
+    path: '/aes',
+    pageName: 'AES',
+  },
+  {
     path: '/rsa',
     pageName: 'RSA',
   },
