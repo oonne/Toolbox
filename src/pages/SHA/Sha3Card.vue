@@ -1,35 +1,36 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import CryptoJS from 'crypto-js';
+import SHA3 from 'js-sha3';
 import { SelectOption } from '../../types/type';
 
 /* 算法 */
 const methodSelectOptions: SelectOption[] = [
   {
-    value: 'SHA224',
-    name: 'SHA-224',
+    value: 'sha3_224',
+    name: 'SHA3-224',
   },
   {
-    value: 'SHA256',
-    name: 'SHA-256',
+    value: 'sha3_256',
+    name: 'SHA3-256',
   },
   {
-    value: 'SHA384',
-    name: 'SHA-384',
+    value: 'sha3_384',
+    name: 'SHA3-384',
   },
   {
-    value: 'SHA512',
-    name: 'SHA-512',
+    value: 'sha3_512',
+    name: 'SHA3-512',
   },
 ];
 
-const method = ref('SHA512');
+const method = ref('sha3_512');
 const input = ref('');
 const output = ref('');
 
 /* 计算 */
+type HashMethod = 'sha3_224' | 'sha3_256' | 'sha3_384' | 'sha3_512';
 const onCalc = () => {
-  output.value = CryptoJS[method.value](input.value).toString();
+  output.value = SHA3[method.value as HashMethod](input.value);
 };
 </script>
 

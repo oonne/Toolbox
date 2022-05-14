@@ -41,7 +41,7 @@ const tabs: Tab[] = [
 
   <!-- 功能 -->
   <TabsNav
-    default="sign"
+    default="decrypt"
     :tabs="tabs"
   />
 

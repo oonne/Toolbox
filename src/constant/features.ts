@@ -22,8 +22,8 @@ const featuresList: Features[] = [
     category: ['All', 'Hash'],
   },
   {
-    name: 'SHA2',
-    label: 'SHA2',
+    name: 'SHA',
+    label: 'SHA',
     category: ['All', 'Hash'],
   },
   {
