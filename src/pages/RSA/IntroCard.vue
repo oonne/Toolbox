@@ -45,7 +45,7 @@
           <td>2048</td>
           <td>112</td>
           <td class="warning">
-            推荐
+            安全
           </td>
         </tr>
         <tr>

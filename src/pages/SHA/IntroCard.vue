@@ -12,7 +12,7 @@
     <table>
       <thead>
         <tr>
-          <th>SHA</th>
+          <th>SHA2</th>
           <th>安全强度</th>
           <th>安全性</th>
         </tr>
