@@ -112,6 +112,9 @@ const clear = () => {
 }
 
 /* textAreaClass的CSS属性 */
+.min-height-6{
+  min-height: 6rem;
+}
 .min-height-10{
   min-height: 10rem;
 }
