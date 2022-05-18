@@ -6,10 +6,14 @@ export interface HTMLInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
 
-// JSEncrypt用的 签名/校验 哈希算法
+// JSEncrypt RSA 签名/校验 哈希算法
 // eslint-disable-next-line no-unused-vars
 export type RSAHashFun = (str: string) => string;
 export type RSAHashMethod = 'MD5' | 'SHA1' | 'SHA256' | 'SHA512' | 'RIPEMD160';
+
+// CryptoJS AES 加密模式和填充模式
+export type AESMode = 'ECB' | 'CBC' | 'CFB' | 'OFB' | 'CTR';
+export type AESPadding = 'AnsiX923' | 'Iso10126' | 'Iso97971' | 'Pkcs7' | 'ZeroPadding' | 'NoPadding';
 
 /* 导航栏 */
 export interface Tab {
