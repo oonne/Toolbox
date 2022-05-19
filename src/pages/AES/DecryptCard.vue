@@ -8,7 +8,7 @@ const iv = ref('');
 const input = ref('');
 const output = ref('');
 
-/* 分组密码工作模式 */
+// 分组密码工作模式
 const modeSelectOptions: SelectOption[] = [
   {
     value: 'ECB',
@@ -33,7 +33,7 @@ const modeSelectOptions: SelectOption[] = [
 ];
 const mode = ref('CBC');
 
-/* 填充模式模式 */
+// 填充模式模式
 const padSelectOptions: SelectOption[] = [
   {
     value: 'AnsiX923',

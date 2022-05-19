@@ -14,7 +14,7 @@ const featuresList: Features[] = [
   {
     name: 'QRcode',
     label: '二维码',
-    category: ['All', 'Encode'],
+    category: ['All', 'Other'],
   },
   {
     name: 'MD5',
@@ -27,14 +27,19 @@ const featuresList: Features[] = [
     category: ['All', 'Hash'],
   },
   {
+    name: 'PBKDF2',
+    label: 'PBKDF2',
+    category: ['All', 'Encrypt'],
+  },
+  {
     name: 'AES',
     label: 'AES',
-    category: ['All', 'Symmetrical'],
+    category: ['All', 'Encrypt'],
   },
   {
     name: 'RSA',
     label: 'RSA',
-    category: ['All', 'Asymmetric'],
+    category: ['All', 'Encrypt'],
   },
 ];
 

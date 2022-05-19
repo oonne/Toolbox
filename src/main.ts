@@ -8,6 +8,7 @@ import ContentCard from './components/ContentCard.vue';
 import TabsNav from './components/TabsNav.vue';
 import ConfirmButton from './components/ConfirmButton.vue';
 import TextInput from './components/TextInput.vue';
+import ValueInput from './components/ValueInput.vue';
 import SelectInput from './components/SelectInput.vue';
 import FileInput from './components/FileInput.vue';
 
@@ -41,5 +42,6 @@ app.component('ContentCard', ContentCard);
 app.component('TabsNav', TabsNav);
 app.component('ConfirmButton', ConfirmButton);
 app.component('TextInput', TextInput);
+app.component('ValueInput', ValueInput);
 app.component('SelectInput', SelectInput);
 app.component('FileInput', FileInput);

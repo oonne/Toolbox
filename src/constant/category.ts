@@ -18,12 +18,12 @@ const categoryList: Category[] = [
     en: 'Hash',
   },
   {
-    cn: '对称加密',
-    en: 'Symmetrical',
+    cn: '加密解密',
+    en: 'Encrypt',
   },
   {
-    cn: '非对称加密',
-    en: 'Asymmetric',
+    cn: '其他',
+    en: 'Other',
   },
 ];
 

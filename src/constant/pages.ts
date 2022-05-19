@@ -33,6 +33,10 @@ const pages: Page[] = [
     path: '/rsa',
     pageName: 'RSA',
   },
+  {
+    path: '/pbkdf2',
+    pageName: 'PBKDF2',
+  },
 ];
 
 export default pages;
