@@ -70,7 +70,7 @@ const onDecrypt = () => {
     padding: CryptoJS.pad[pad.value as AESPadding],
   });
 
-  output.value = decrypt.toString();
+  output.value = CryptoJS.enc.Utf8.stringify(decrypt);
 };
 
 </script>

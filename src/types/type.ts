@@ -15,6 +15,9 @@ export type RSAHashMethod = 'MD5' | 'SHA1' | 'SHA256' | 'SHA512' | 'RIPEMD160';
 export type AESMode = 'ECB' | 'CBC' | 'CFB' | 'OFB' | 'CTR';
 export type AESPadding = 'AnsiX923' | 'Iso10126' | 'Iso97971' | 'Pkcs7' | 'ZeroPadding' | 'NoPadding';
 
+// 输出格式
+export type Formatter = 'Base64' | 'Hex';
+
 /* 导航栏 */
 export interface Tab {
   key: string;

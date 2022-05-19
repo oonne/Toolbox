@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CryptoJS from 'crypto-js';
-import { SelectOption } from '../../types/type';
+import { SelectOption, Formatter } from '../../types/type';
 
 const input = ref('');
 const salt = ref('');
@@ -25,6 +25,19 @@ const sizeSelectOptions: SelectOption[] = [
 ];
 const size = ref(256 / 32);
 
+// 输出格式
+const outputFormatterSelectOptions: SelectOption[] = [
+  {
+    value: 'Base64',
+    name: 'Base64',
+  },
+  {
+    value: 'Hex',
+    name: 'Hex',
+  },
+];
+const outputFormatter = ref('Hex');
+
 /* 计算 */
 const onCalc = () => {
   const iterationsTimes = Math.ceil(iterations.value);
@@ -33,7 +46,7 @@ const onCalc = () => {
     iterations: iterationsTimes,
   });
 
-  output.value = key.toString();
+  output.value = key.toString(CryptoJS.enc[outputFormatter.value as Formatter]);
 };
 </script>
 
@@ -66,6 +79,11 @@ const onCalc = () => {
       v-model:selected="size"
       label="模式"
       :options="sizeSelectOptions"
+    />
+    <SelectInput
+      v-model:selected="outputFormatter"
+      label="输出"
+      :options="outputFormatterSelectOptions"
     />
     <ConfirmButton
       text="计算"
