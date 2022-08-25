@@ -11,7 +11,7 @@
     <a
       href="https://beian.miit.gov.cn/"
       target="_blank"
-    >粤ICP备11053055</a>
+    >粤ICP备11053055号</a>
     <span>&copy;</span>
     <a
       href="https://blog.oonne.com"

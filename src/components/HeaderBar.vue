@@ -8,7 +8,7 @@ defineProps<{ title: string }>();
       class="logo"
       :to="{name: 'Index'}"
     >
-      工具箱
+      加一工具箱
     </router-link>
     <h1>{{ title }}</h1>
   </header>

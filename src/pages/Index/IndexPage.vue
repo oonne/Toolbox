@@ -17,7 +17,7 @@ const featuresList = computed(() => features.filter((f) => f.category.includes(a
   <div class="index">
     <!-- 标题 -->
     <header class="logo">
-      工具箱
+      加一工具箱
     </header>
 
     <!-- 筛选 -->
