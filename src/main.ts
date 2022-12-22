@@ -10,6 +10,7 @@ import ConfirmButton from './components/ConfirmButton.vue';
 import TextInput from './components/TextInput.vue';
 import ValueInput from './components/ValueInput.vue';
 import SelectInput from './components/SelectInput.vue';
+import CheckboxInput from './components/CheckboxInput.vue';
 import FileInput from './components/FileInput.vue';
 
 const app = createApp(App);
@@ -44,4 +45,5 @@ app.component('ConfirmButton', ConfirmButton);
 app.component('TextInput', TextInput);
 app.component('ValueInput', ValueInput);
 app.component('SelectInput', SelectInput);
+app.component('CheckboxInput', CheckboxInput);
 app.component('FileInput', FileInput);

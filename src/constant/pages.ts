@@ -37,6 +37,10 @@ const pages: Page[] = [
     path: '/pbkdf2',
     pageName: 'PBKDF2',
   },
+  {
+    path: '/password',
+    pageName: 'Password',
+  },
 ];
 
 export default pages;

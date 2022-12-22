@@ -41,6 +41,11 @@ const featuresList: Features[] = [
     label: 'RSA',
     category: ['All', 'Encrypt'],
   },
+  {
+    name: 'Password',
+    label: '口令生成器',
+    category: ['All', 'Other'],
+  },
 ];
 
 export default featuresList;
