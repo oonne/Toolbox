@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Utils } from '../../utils/index';
 
 const checkNum = ref(true);
 const checkCaps = ref(true);
@@ -21,7 +22,11 @@ const onCalc = () => {
     return;
   }
 
-  output.value = character;
+  let password = '';
+  for (let i = 0; i < passLength.value; i += 1) {
+    password += character.charAt(Utils.randomWithin(character.length));
+  }
+  output.value = password;
 };
 </script>
 
