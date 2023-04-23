@@ -33,12 +33,6 @@ const onEncrypt = () => {
     v-model:text.lazy="input"
     placeholder="明文"
   />
-  <TextInput
-    v-if="!!output"
-    placeholder="密文"
-    :text="output"
-    readonly
-  />
   <div class="button-warp">
     <ConfirmButton
       text="加密"
@@ -46,6 +40,12 @@ const onEncrypt = () => {
       @click="onEncrypt"
     />
   </div>
+  <TextInput
+    v-if="!!output"
+    placeholder="密文"
+    :text="output"
+    readonly
+  />
 </template>
 
 <style scoped>

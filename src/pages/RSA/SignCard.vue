@@ -64,12 +64,6 @@ const onSign = () => {
     v-model:text.lazy="input"
     placeholder="内容"
   />
-  <TextInput
-    v-if="!!output"
-    placeholder="签名"
-    :text="output"
-    readonly
-  />
   <div class="button-warp">
     <SelectInput
       v-model:selected="hashMethod"
@@ -82,6 +76,12 @@ const onSign = () => {
       @click="onSign"
     />
   </div>
+  <TextInput
+    v-if="!!output"
+    placeholder="签名"
+    :text="output"
+    readonly
+  />
 </template>
 
 <style scoped>

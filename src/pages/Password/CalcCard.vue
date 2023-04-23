@@ -31,13 +31,6 @@ const onCalc = () => {
 </script>
 
 <template>
-  <div class="input-warp">
-    <TextInput
-      :text="output"
-      text-area-class="min-height-6"
-      readonly
-    />
-  </div>
   <div class="button-warp">
     <CheckboxInput
       id="checkNum"
@@ -73,6 +66,13 @@ const onCalc = () => {
       text="生成"
       :disable="passLength<=0"
       @click="onCalc"
+    />
+  </div>
+  <div class="input-warp">
+    <TextInput
+      :text="output"
+      text-area-class="min-height-6"
+      readonly
     />
   </div>
 </template>

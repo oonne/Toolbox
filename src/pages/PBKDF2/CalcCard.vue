@@ -63,11 +63,6 @@ const onCalc = () => {
       placeholder="盐"
     />
   </div>
-  <TextInput
-    placeholder="秘钥"
-    :text="output"
-    readonly
-  />
   <div class="button-warp">
     <ValueInput
       v-model:value="iterations"
@@ -91,6 +86,11 @@ const onCalc = () => {
       @click="onCalc"
     />
   </div>
+  <TextInput
+    placeholder="秘钥"
+    :text="output"
+    readonly
+  />
 </template>
 
 <style scoped>
