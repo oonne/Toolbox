@@ -68,22 +68,15 @@ const onCalc = () => {
       @click="onCalc"
     />
   </div>
-  <div class="input-warp">
-    <TextInput
-      :text="output"
-      text-area-class="min-height-6"
-      readonly
-    />
-  </div>
+  <TextInput
+    v-if="!!output"
+    :text="output"
+    text-area-class="min-height-6"
+    readonly
+  />
 </template>
 
 <style scoped>
-.input-warp{
-  display: flex;
-  justify-content: space-between;
-  flex-flow: wrap;
-}
-
 .button-warp{
   display: flex;
   justify-content: flex-end;

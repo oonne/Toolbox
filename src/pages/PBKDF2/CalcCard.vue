@@ -87,6 +87,7 @@ const onCalc = () => {
     />
   </div>
   <TextInput
+    v-if="!!output"
     placeholder="秘钥"
     :text="output"
     readonly
