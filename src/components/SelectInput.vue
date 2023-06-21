@@ -33,6 +33,12 @@ defineEmits(['update:selected']);
 .select-warp{
   margin: 8px 12px 8px 24px;
 }
+@media screen and (max-width: 800px) {
+  .select-warp{
+    margin-right: -4px;
+  }
+}
+
 label{
   padding: 12px 0;
 }

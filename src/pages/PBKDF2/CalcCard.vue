@@ -105,5 +105,11 @@ const onCalc = () => {
   display: flex;
   justify-content: flex-end;
 }
+@media screen and (max-width: 680px) {
+  .button-warp{
+    flex-direction: column;
+    align-items: end;
+  }
+}
 
 </style>

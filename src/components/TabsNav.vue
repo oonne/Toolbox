@@ -18,7 +18,7 @@ const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.val
 
 <template>
   <div class="content-card">
-    <!-- 筛选 -->
+    <!-- Tabs -->
     <div class="tabs-warp">
       <ul class="tabs">
         <li
@@ -33,7 +33,7 @@ const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.val
       </ul>
     </div>
 
-    <!-- 组件 -->
+    <!-- Content -->
     <div class="content-page">
       <keep-alive>
         <component :is="activeTab?.component" />
@@ -48,6 +48,11 @@ const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.val
   background:  var(--content-background);
   margin: 16px auto;
 }
+@media screen and (max-width: 800px) {
+  .content-card{
+    margin: 2px auto;
+  }
+}
 
 .tabs-warp{
   overflow: auto;
@@ -60,6 +65,9 @@ const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.val
   background-color: var(--content-stacked-background);
 }
 .tab-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   list-style: none;
   padding: 16px;
   width: 128px;

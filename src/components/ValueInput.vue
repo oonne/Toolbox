@@ -54,6 +54,12 @@ defineEmits(['update:value']);
 .input-warp{
   margin: 8px 12px 8px 24px;
 }
+@media screen and (max-width: 800px) {
+  .input-warp{
+    margin-right: -4px;
+  }
+}
+
 label{
   padding: 12px 0;
 }
