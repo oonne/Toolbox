@@ -38,17 +38,11 @@ const onCalc = () => {
 </script>
 
 <template>
-  <div class="input-warp">
-    <TextInput
-      v-model:text.lazy="input"
-      placeholder="内容"
-    />
-    <TextInput
-      placeholder="哈希值"
-      :text="output"
-      readonly
-    />
-  </div>
+  <TextInput
+    v-model:text.lazy="input"
+    placeholder="内容"
+  />
+
   <div class="button-warp">
     <SelectInput
       v-model:selected="method"
@@ -61,15 +55,16 @@ const onCalc = () => {
       @click="onCalc"
     />
   </div>
+
+  <TextInput
+    v-if="!!output"
+    placeholder="哈希值"
+    :text="output"
+    readonly
+  />
 </template>
 
 <style scoped>
-.input-warp{
-  display: flex;
-  justify-content: space-between;
-  flex-flow: wrap;
-}
-
 .button-warp{
   display: flex;
   justify-content: flex-end;
