@@ -122,4 +122,10 @@ const onDecrypt = () => {
   justify-content: flex-end;
 }
 
+@media screen and (max-width: 480px) {
+  .button-warp{
+    flex-direction: column;
+    align-items: end;
+  }
+}
 </style>
