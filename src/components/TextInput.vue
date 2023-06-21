@@ -103,6 +103,12 @@ const clear = () => {
   bottom: 10px;
   right: 10px;
 }
+@media screen and (max-width: 800px) {
+  .button-list{
+    bottom: 4px;
+    right: 4px;
+  }
+}
 .button{
   background-color: #999;
   margin: 8px;

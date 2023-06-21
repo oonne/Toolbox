@@ -15,6 +15,11 @@
   margin: 16px auto;
   padding: 16px 24px;
 }
+@media screen and (max-width: 800px) {
+  .content-card{
+    margin: 2px auto;
+  }
+}
 
 /* 简介内容 */
 .content-card:deep() h2{
@@ -39,5 +44,4 @@
   border: 1px solid var(--color);
   padding: 0.5rem 1rem;
 }
-
 </style>
