@@ -119,10 +119,6 @@ const generate = async () => {
 
 <template>
   <div class="button-warp">
-    <ConfirmButton
-      text="生成"
-      @click="generate"
-    />
     <SelectInput
       v-model:selected="keyUsages"
       label="用途"
@@ -132,6 +128,10 @@ const generate = async () => {
       v-model:selected="keyLen"
       label="长度"
       :options="keyLenSelectOptions"
+    />
+    <ConfirmButton
+      text="生成"
+      @click="generate"
     />
   </div>
   <TextInput
@@ -149,6 +149,13 @@ const generate = async () => {
 <style scoped>
 .button-warp{
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 480px) {
+  .button-warp{
+    flex-direction: column;
+    align-items: end;
+  }
 }
 </style>
