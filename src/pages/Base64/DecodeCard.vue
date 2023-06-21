@@ -20,17 +20,11 @@ const onDecode = () => {
 </script>
 
 <template>
-  <div class="input-warp">
-    <TextInput
-      v-model:text.lazy="input"
-      placeholder="解码前"
-    />
-    <TextInput
-      :text="output"
-      placeholder="解码后"
-      readonly
-    />
-  </div>
+  <TextInput
+    v-model:text.lazy="input"
+    placeholder="解码前"
+  />
+
   <div class="button-warp">
     <ConfirmButton
       text="解码"
@@ -38,14 +32,16 @@ const onDecode = () => {
       @click="onDecode"
     />
   </div>
+
+  <TextInput
+    v-if="!!output"
+    :text="output"
+    placeholder="解码后"
+    readonly
+  />
 </template>
 
 <style scoped>
-.input-warp{
-  display: flex;
-  justify-content: space-between;
-  flex-flow: wrap;
-}
 
 .button-warp{
   display: flex;

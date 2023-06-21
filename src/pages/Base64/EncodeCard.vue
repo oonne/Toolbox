@@ -12,17 +12,11 @@ const onEncode = () => {
 </script>
 
 <template>
-  <div class="input-warp">
-    <TextInput
-      v-model:text.lazy="input"
-      placeholder="编码前"
-    />
-    <TextInput
-      placeholder="编码后"
-      :text="output"
-      readonly
-    />
-  </div>
+  <TextInput
+    v-model:text.lazy="input"
+    placeholder="编码前"
+  />
+
   <div class="button-warp">
     <ConfirmButton
       text="编码"
@@ -30,15 +24,16 @@ const onEncode = () => {
       @click="onEncode"
     />
   </div>
+
+  <TextInput
+    v-if="!!output"
+    placeholder="编码后"
+    :text="output"
+    readonly
+  />
 </template>
 
 <style scoped>
-.input-warp{
-  display: flex;
-  justify-content: space-between;
-  flex-flow: wrap;
-}
-
 .button-warp{
   display: flex;
   justify-content: flex-end;
