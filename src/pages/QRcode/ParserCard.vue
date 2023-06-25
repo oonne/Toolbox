@@ -5,21 +5,15 @@ import qrcodeParser from 'qrcode-parser';
 const output = ref('');
 
 /* 解析二维码 */
-const parse = async (file: Blob) => {
-  if (file.type !== 'image/png') {
-    output.value = '仅支持png格式的图片';
-    return;
-  }
-
+const parse = async (file: File) => {
   output.value = '解析中...';
-
   output.value = await qrcodeParser(file);
 };
 </script>
 
 <template>
   <FileInput
-    placeholder="拖拽图片到此处（仅限png格式）"
+    placeholder="拖拽图片到此处"
     @change="parse"
   />
 
