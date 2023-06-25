@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { enc } from 'crypto-js';
-import message from '../../components/message';
+import message from '@/components/message';
 
 const input = ref('');
 const output = ref('');

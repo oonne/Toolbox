@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CryptoJS from 'crypto-js';
-import { SelectOption, AESMode, AESPadding } from '../../types/type';
+import type { SelectOption, AESMode, AESPadding } from '@/types/type';
 
 const secret = ref('');
 const iv = ref('');

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { Tab } from '@/types/type';
 import IntroCard from './IntroCard.vue';
 import DecodeCard from './DecodeCard.vue';
 import EncodeCard from './EncodeCard.vue';
 import EncodeFileCard from './EncodeFileCard.vue';
-import type { Tab } from '../../types/type';
 
 const tabs: Tab[] = [
   {

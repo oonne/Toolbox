@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import SHA3 from 'js-sha3';
-import { SelectOption } from '../../types/type';
+import type { SelectOption } from '@/types/type';
 
 /* 算法 */
 const methodSelectOptions: SelectOption[] = [

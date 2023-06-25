@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SelectOption } from '../../types/type';
+import type { SelectOption } from '@/types/type';
 
 /* 下拉框配置 */
 const keyUsagesSelectOptions: SelectOption[] = [

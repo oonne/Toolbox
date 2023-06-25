@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import categorys from '../../constant/category';
-import features from '../../constant/features';
+import categorys from '@/constant/category';
+import features from '@/constant/features';
 
 /* 分类 */
 const active = ref('All');

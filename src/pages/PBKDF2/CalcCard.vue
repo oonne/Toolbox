@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CryptoJS from 'crypto-js';
-import { SelectOption, Formatter } from '../../types/type';
+import type { SelectOption, Formatter } from '@/types/type';
 
 const input = ref('');
 const salt = ref('');

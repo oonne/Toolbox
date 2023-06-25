@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { Tab } from '@/types/type';
 import GeneratorCard from './GeneratorCard.vue';
 import ParserCard from './ParserCard.vue';
-import type { Tab } from '../../types/type';
 
 const tabs: Tab[] = [
   {

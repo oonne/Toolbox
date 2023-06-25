@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Link } from '../../types/type';
+import type { Link } from '@/types/type';
 
 const refer: Link[] = [
   {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Utils } from '../../utils/index';
+import { Utils } from '@/utils/index';
 
 const checkNum = ref(true);
 const checkCaps = ref(true);

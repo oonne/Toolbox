@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CryptoJS from 'crypto-js';
-import { SelectOption } from '../../types/type';
+import type { SelectOption } from '@/types/type';
 
 /* 算法 */
 const methodSelectOptions: SelectOption[] = [

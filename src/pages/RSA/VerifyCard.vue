@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 import { JSEncrypt } from 'jsencrypt';
 import CryptoJS from 'crypto-js';
-import message from '../../components/message';
-import type { SelectOption, RSAHashFun, RSAHashMethod } from '../../types/type';
+import message from '@/components/message';
+import type { SelectOption, RSAHashFun, RSAHashMethod } from '@/types/type';
 
 /* 哈希算法 */
 const hashSelectOptions: SelectOption[] = [

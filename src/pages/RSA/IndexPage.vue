@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { Tab } from '@/types/type';
 import IntroCard from './IntroCard.vue';
 import GenerateKeyCard from './GenerateKeyCard.vue';
 import DecryptCard from './DecryptCard.vue';
 import EncryptCard from './EncryptCard.vue';
 import SignCard from './SignCard.vue';
 import VerifyCard from './VerifyCard.vue';
-import type { Tab } from '../../types/type';
 
 const tabs: Tab[] = [
   {

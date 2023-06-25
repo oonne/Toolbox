@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue';
 import qrcode from 'qrcode';
-import { Utils } from '../../utils';
+import { Utils } from '@/utils';
 
 const input = ref('');
 
