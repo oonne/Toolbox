@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import qrcodeParser from 'qrcode-parser';
+import message from '@/components/message';
+import { to } from '@/utils';
 
 const output = ref('');
 
 /* 解析二维码 */
 const parse = async (file: File) => {
   output.value = '解析中...';
-  output.value = await qrcodeParser(file);
+
+  const [err, res] = await to(qrcodeParser(file));
+  if (err) {
+    message('解析失败');
+    output.value = '';
+    return;
+  }
+
+  output.value = res;
 };
 </script>
 
