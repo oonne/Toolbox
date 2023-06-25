@@ -42,6 +42,11 @@ watch(input, Utils.debounce((text: string) => {
   justify-content: space-between;
   flex-flow: wrap;
 }
+@media screen and (max-width: 800px) {
+  .qrcode-warp{
+    flex-direction: column;
+  }
+}
 .qrcode{
   margin: 8px;
   background: #fff;
