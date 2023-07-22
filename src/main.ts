@@ -17,7 +17,7 @@ const app = createApp(App);
 
 /* 路由 */
 // 懒加载
-const getPage = (paggName: string) => import(`./pages/${paggName}/IndexPage.vue`);
+const getPage = (pageName: string) => import(`./pages/${pageName}/IndexPage.vue`);
 const routes: RouteRecordRaw[] = pages.map((route) => ({
   path: route.path,
   name: route.pageName,
