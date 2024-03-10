@@ -21,17 +21,13 @@ const onFileChange = async (event: Event) => {
 };
 
 /* 文件拖拽 */
-window.addEventListener('dragenter', (event) => { event.preventDefault(); }, false);
-window.addEventListener('dragleave', (event) => { event.preventDefault(); }, false);
-window.addEventListener('dragover', (event) => { event.preventDefault(); }, false);
-window.addEventListener('drop', (event) => {
+const onFileDrop = async (event: DragEvent) => {
   if (!event.dataTransfer) {
     return;
   }
 
   emit('change', event.dataTransfer.files[0]);
-  event.preventDefault();
-}, false);
+};
 </script>
 
 <template>
@@ -43,6 +39,10 @@ window.addEventListener('drop', (event) => {
       v-show="false"
       type="file"
       @change="onFileChange"
+      @dragenter.prevent
+      @dragleave.prevent
+      @dragover.prevent
+      @drop.prevent="onFileDrop"
     >
   </label>
 </template>
