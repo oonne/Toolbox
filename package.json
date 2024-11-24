@@ -10,7 +10,7 @@
   "dependencies": {
     "@vitejs/plugin-vue": "^5.2.0",
     "crypto-js": "^4.2.0",
-    "eslint": "^9.15.0",
+    "eslint": "^8.57.0",
     "js-sha3": "^0.9.3",
     "jsencrypt": "^3.3.2",
     "qrcode": "^1.5.4",

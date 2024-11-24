@@ -9,7 +9,7 @@
   <!-- 底部版权及备案号 -->
   <footer>
     <a
-      href="https://beian.miit.gov.cn/"
+      href="https://beian.miit.gov.cn"
       target="_blank"
     >粤ICP备11053055号</a>
     <span>&copy;</span>
