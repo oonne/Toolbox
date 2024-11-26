@@ -33,16 +33,16 @@ const onFileDrop = async (event: DragEvent) => {
 <template>
   <label
     class="drop"
+    @dragenter.prevent
+    @dragleave.prevent
+    @dragover.prevent
+    @drop.prevent="onFileDrop"
   >
     {{ placeholder }}
     <input
       v-show="false"
       type="file"
       @change="onFileChange"
-      @dragenter.prevent
-      @dragleave.prevent
-      @dragover.prevent
-      @drop.prevent="onFileDrop"
     >
   </label>
 </template>
