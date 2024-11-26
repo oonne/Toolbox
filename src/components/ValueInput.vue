@@ -1,35 +1,17 @@
 <script setup lang="ts">
-defineProps({
-  label: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  value: {
-    type: String || Number,
-    required: true,
-    default: '',
-  },
-  placeholder: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  type: {
-    type: String,
-    required: false,
-    default: 'text',
-  },
-  readonly: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  inputClass: {
-    type: String,
-    required: false,
-    default: '',
-  },
+withDefaults(defineProps<{
+  label?: string;
+  value: string | number;
+  placeholder?: string;
+  type?: string;
+  readonly?: boolean;
+  inputClass?: string;
+}>(), {
+  label: '',
+  placeholder: '',
+  type: 'text',
+  readonly: false,
+  inputClass: '',
 });
 
 defineEmits(['update:value']);
