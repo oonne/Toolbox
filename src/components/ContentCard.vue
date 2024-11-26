@@ -14,6 +14,7 @@
   background:  var(--content-background);
   margin: 16px auto;
   padding: 16px 24px;
+  line-height: 1.6;
 }
 @media screen and (max-width: 800px) {
   .content-card{
