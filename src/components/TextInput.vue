@@ -1,27 +1,16 @@
 <script setup lang="ts">
 import message from './message';
 
-const props = defineProps({
-  text: {
-    type: String,
-    required: true,
-    default: '',
-  },
-  placeholder: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  readonly: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  textAreaClass: {
-    type: String,
-    required: false,
-    default: '',
-  },
+const props = withDefaults(defineProps<{
+  text: string;
+  placeholder?: string;
+  readonly?: boolean;
+  textAreaClass?: string;
+}>(), {
+  text: '',
+  placeholder: '',
+  readonly: false,
+  textAreaClass: '',
 });
 
 const emit = defineEmits(['update:text']);

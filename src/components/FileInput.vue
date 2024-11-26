@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { HTMLInputEvent } from '../types/type';
 
-defineProps({
-  placeholder: {
-    type: String,
-    required: false,
-    default: '拖拽文件到此处',
-  },
+withDefaults(defineProps<{
+  placeholder?: string;
+}>(), {
+  placeholder: '拖拽文件到此处',
 });
 
 const emit = defineEmits(['change']);
