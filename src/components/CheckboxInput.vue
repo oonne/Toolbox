@@ -1,25 +1,14 @@
 <script setup lang="ts">
-defineProps({
-  id: {
-    type: String,
-    required: false,
-    default: 'checkbox',
-  },
-  label: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  value: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
-  inputClass: {
-    type: String,
-    required: false,
-    default: '',
-  },
+withDefaults(defineProps<{
+  id?: string;
+  label?: string;
+  value: boolean;
+  inputClass?: string;
+}>(), {
+  id: 'checkbox',
+  label: '',
+  value: false,
+  inputClass: '',
 });
 
 defineEmits(['update:value']);
