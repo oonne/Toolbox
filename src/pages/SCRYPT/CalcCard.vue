@@ -42,7 +42,7 @@ const rSelectOptions: SelectOption[] = [
     name: '256',
   },
 ];
-const r = ref(2 ** 8);
+const r = ref(2 ** 6);
 
 // p（并行计算）
 const pSelectOptions: SelectOption[] = [
