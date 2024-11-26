@@ -34,6 +34,10 @@ const pages: Page[] = [
     pageName: 'RSA',
   },
   {
+    path: '/scrypt',
+    pageName: 'SCRYPT',
+  },
+  {
     path: '/pbkdf2',
     pageName: 'PBKDF2',
   },

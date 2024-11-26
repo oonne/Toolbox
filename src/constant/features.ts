@@ -7,6 +7,11 @@ interface Features {
 
 const featuresList: Features[] = [
   {
+    name: 'SCRYPT',
+    label: 'SCRYPT',
+    category: ['All', 'Encrypt'],
+  },
+  {
     name: 'PBKDF2',
     label: 'PBKDF2',
     category: ['All', 'Encrypt'],
