@@ -16,7 +16,7 @@ const toast = async (text: string) => {
   const vnode = h(MessageToast, { text });
   render(vnode, div);
 
-  await Utils.wait(2000);
+  await Utils.sleep(2000);
   render(null, div);
   div.remove();
 };

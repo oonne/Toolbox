@@ -18,7 +18,7 @@ const randomWithin = (n: number): number => Math.floor(Math.random() * n);
 /**
  *  延迟一定时间，单位毫秒。
  */
-const wait = async (time: number): Promise<void> => new Promise((resolve) => {
+const sleep = async (time: number): Promise<void> => new Promise((resolve) => {
   setTimeout(resolve, time);
 });
 
@@ -28,7 +28,7 @@ const wait = async (time: number): Promise<void> => new Promise((resolve) => {
  * @param {number} waitTime 等待时间
  * @returns {function}
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const debounce = (fn: Function, waitTime: number) => {
   let timer: Timer = null;
 
@@ -47,6 +47,6 @@ const debounce = (fn: Function, waitTime: number) => {
 export default {
   randomDigits,
   randomWithin,
-  wait,
+  sleep,
   debounce,
 };

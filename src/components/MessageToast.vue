@@ -10,7 +10,7 @@ const show = ref(false);
 
 onMounted(async () => {
   show.value = true;
-  await Utils.wait(1500);
+  await Utils.sleep(1500);
   show.value = false;
 });
 

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import scrypt from 'scrypt-js';
+import ScryptJS from 'scrypt-js';
+import toast from '@/components/message';
+import { Utils } from '@/utils/index';
 import type { SelectOption } from '@/types/type';
 
 const input = ref('');
@@ -14,17 +16,33 @@ const nSelectOptions: SelectOption[] = [
     value: 2 ** 10,
     name: '1024',
   },
+  {
+    value: 2 ** 12,
+    name: '4096',
+  },
+  {
+    value: 2 ** 14,
+    name: '16384',
+  },
 ];
-const n = ref(2 ** 10);
+const n = ref(2 ** 12);
 
 // r（内存消耗）
 const rSelectOptions: SelectOption[] = [
   {
-    value: 8,
+    value: 2 ** 3,
     name: '8',
   },
+  {
+    value: 2 ** 6,
+    name: '64',
+  },
+  {
+    value: 2 ** 8,
+    name: '256',
+  },
 ];
-const r = ref(8);
+const r = ref(2 ** 8);
 
 // p（并行计算）
 const pSelectOptions: SelectOption[] = [
@@ -32,25 +50,49 @@ const pSelectOptions: SelectOption[] = [
     value: 1,
     name: '1',
   },
+  {
+    value: 2,
+    name: '2',
+  },
+  {
+    value: 2 ** 2,
+    name: '4',
+  },
+  {
+    value: 2 ** 3,
+    name: '8',
+  },
 ];
 const p = ref(1);
 
 /* 计算 */
-const onCalc = () => {
-  output.value = '计算中';
+const loading = ref(false);
+const onCalc = async () => {
+  loading.value = true;
+  output.value = '计算中...';
+  await Utils.sleep(1);
 
-  const inputArr = new TextEncoder().encode(input.value);
-  const saltArr = new TextEncoder().encode(salt.value);
-  const res = scrypt.syncScrypt(
-    inputArr,
-    saltArr,
-    Number(n.value),
-    Number(r.value),
-    Number(p.value),
-    Number(dkLen.value),
-  );
-
-  output.value = Array.from(res).map((v) => v.toString(16).padStart(2, '0')).join('');
+  try {
+    const startTime = Date.now();
+    const inputArr = new TextEncoder().encode(input.value);
+    const saltArr = new TextEncoder().encode(salt.value);
+    const res = ScryptJS.syncScrypt(
+      inputArr,
+      saltArr,
+      Number(n.value),
+      Number(r.value),
+      Number(p.value),
+      Number(dkLen.value),
+    );
+    const endTime = Date.now();
+    toast(`耗时: ${endTime - startTime}ms`);
+    output.value = Array.from(res).map((v) => v.toString(16).padStart(2, '0')).join('');
+  } catch (error: any) {
+    toast(`计算失败: ${error.message}`);
+    output.value = '';
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
 
@@ -91,7 +133,7 @@ const onCalc = () => {
     />
     <ConfirmButton
       text="计算"
-      :disable="input==='' || salt==='' || !dkLen"
+      :disable="loading || input==='' || salt==='' || !dkLen"
       @click="onCalc"
     />
   </div>

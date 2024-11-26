@@ -39,5 +39,6 @@ module.exports = {
       ts: 'never',
       vue: 'never',
     }],
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
