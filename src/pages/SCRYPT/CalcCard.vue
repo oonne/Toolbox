@@ -1,52 +1,56 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import CryptoJS from 'crypto-js';
-import type { SelectOption, Formatter } from '@/types/type';
+import scrypt from 'scrypt-js';
+import type { SelectOption } from '@/types/type';
 
 const input = ref('');
 const salt = ref('');
-const iterations = ref(1);
+const dkLen = ref(64);
 const output = ref('');
 
-// 秘钥长度
-const sizeSelectOptions: SelectOption[] = [
+// n（计算难度）
+const nSelectOptions: SelectOption[] = [
   {
-    value: 128 / 32,
-    name: '128',
-  },
-  {
-    value: 256 / 32,
-    name: '256',
-  },
-  {
-    value: 512 / 32,
-    name: '512',
+    value: 2 ** 10,
+    name: '1024',
   },
 ];
-const size = ref(256 / 32);
+const n = ref(2 ** 10);
 
-// 输出格式
-const outputFormatterSelectOptions: SelectOption[] = [
+// r（内存消耗）
+const rSelectOptions: SelectOption[] = [
   {
-    value: 'Base64',
-    name: 'Base64',
-  },
-  {
-    value: 'Hex',
-    name: 'Hex',
+    value: 8,
+    name: '8',
   },
 ];
-const outputFormatter = ref('Hex');
+const r = ref(8);
+
+// p（并行计算）
+const pSelectOptions: SelectOption[] = [
+  {
+    value: 1,
+    name: '1',
+  },
+];
+const p = ref(1);
 
 /* 计算 */
 const onCalc = () => {
-  const iterationsTimes = Math.ceil(iterations.value);
-  const key = CryptoJS.PBKDF2(input.value, salt.value, {
-    keySize: size.value,
-    iterations: iterationsTimes,
-  });
+  output.value = '计算中';
 
-  output.value = key.toString(CryptoJS.enc[outputFormatter.value as Formatter]);
+  const inputArr = new TextEncoder().encode(input.value);
+  const saltArr = new TextEncoder().encode(salt.value);
+  const res = scrypt.syncScrypt(
+    inputArr,
+    saltArr,
+    Number(n.value),
+    Number(r.value),
+    Number(p.value),
+    Number(dkLen.value),
+  );
+
+  output.value = Array.from(res).map((v) => v.toString(16).padStart(2, '0')).join('');
 };
 </script>
 
@@ -64,25 +68,30 @@ const onCalc = () => {
     />
   </div>
   <div class="button-warp">
+    <SelectInput
+      v-model:selected="n"
+      label="n (计算难度)"
+      :options="nSelectOptions"
+    />
+    <SelectInput
+      v-model:selected="r"
+      label="r (内存消耗)"
+      :options="rSelectOptions"
+    />
+    <SelectInput
+      v-model:selected="p"
+      label="p (并行计算)"
+      :options="pSelectOptions"
+    />
     <ValueInput
-      v-model:value="iterations"
+      v-model:value="dkLen"
       input-class="center width-40"
       type="number"
-      label="迭代次数"
-    />
-    <SelectInput
-      v-model:selected="size"
-      label="模式"
-      :options="sizeSelectOptions"
-    />
-    <SelectInput
-      v-model:selected="outputFormatter"
-      label="输出"
-      :options="outputFormatterSelectOptions"
+      label="输出长度"
     />
     <ConfirmButton
       text="计算"
-      :disable="input==='' || salt==='' || iterations<=0"
+      :disable="input==='' || salt==='' || !dkLen"
       @click="onCalc"
     />
   </div>
