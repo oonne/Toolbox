@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import ScryptJS from 'scrypt-js';
 import toast from '@/components/message';
-import { Utils } from '@/utils/index';
+import { to } from '@/utils/index';
 import type { SelectOption } from '@/types/type';
 
 const input = ref('');
@@ -25,7 +25,7 @@ const nSelectOptions: SelectOption[] = [
     name: '16384',
   },
 ];
-const n = ref(2 ** 12);
+const n = ref(2 ** 10);
 
 // r（内存消耗）
 const rSelectOptions: SelectOption[] = [
@@ -70,29 +70,29 @@ const loading = ref(false);
 const onCalc = async () => {
   loading.value = true;
   output.value = '计算中...';
-  await Utils.sleep(1);
 
-  try {
-    const startTime = Date.now();
-    const inputArr = new TextEncoder().encode(input.value);
-    const saltArr = new TextEncoder().encode(salt.value);
-    const res = ScryptJS.syncScrypt(
-      inputArr,
-      saltArr,
-      Number(n.value),
-      Number(r.value),
-      Number(p.value),
-      Number(dkLen.value),
-    );
-    const endTime = Date.now();
-    toast(`耗时: ${endTime - startTime}ms`);
-    output.value = Array.from(res).map((v) => v.toString(16).padStart(2, '0')).join('');
-  } catch (error: any) {
-    toast(`计算失败: ${error.message}`);
+  const startTime = Date.now();
+  const inputArr = new TextEncoder().encode(input.value);
+  const saltArr = new TextEncoder().encode(salt.value);
+  const [err, res] = await to(ScryptJS.scrypt(
+    inputArr,
+    saltArr,
+    Number(n.value),
+    Number(r.value),
+    Number(p.value),
+    Number(dkLen.value),
+  ));
+  loading.value = false;
+  const endTime = Date.now();
+  toast(`耗时: ${endTime - startTime}ms`);
+
+  if (err) {
+    toast(`计算失败: ${err.message}`);
     output.value = '';
-  } finally {
-    loading.value = false;
+    return;
   }
+
+  output.value = Array.from(res as Uint8Array).map((v) => v.toString(16).padStart(2, '0')).join('');
 };
 </script>
 
