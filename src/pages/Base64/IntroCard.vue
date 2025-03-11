@@ -3,7 +3,7 @@ import type { Link } from '@/types/type';
 
 const refer: Link[] = [
   {
-    href: 'https://blog.oonne.com/site/blog?id=32',
+    href: 'https://blog.oonne.com/detail/base64',
     text: 'Base64编码原理及应用',
   },
   {

@@ -3,7 +3,7 @@ import type { Link } from '@/types/type';
 
 const refer: Link[] = [
   {
-    href: 'https://blog.oonne.com/site/blog?id=75',
+    href: 'https://blog.oonne.com/detail/pow',
     text: '工作量证明',
   },
 ];
