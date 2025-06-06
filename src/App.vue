@@ -11,6 +11,7 @@
     <a
       href="https://beian.miit.gov.cn"
       target="_blank"
+      rel="nofollow"
     >粤ICP备11053055号</a>
     <span>&copy;</span>
     <a
