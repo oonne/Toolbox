@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import { Cal } from '@/utils/index';
 
 const { times, divide } = Cal;
@@ -11,143 +11,115 @@ const thousand = ref(0);
 const wan = ref(0);
 const yi = ref(0);
 
-// 记录当前正在更新的字段，避免无限循环
-let updatingField = '';
+// 记录当前正在更新的字段，避免死循环
+let isUpdating = false;
 
-/* 计算函数 */
-const calculateFromNumber = (value: number) => {
-  if (updatingField === 'number') return;
+/**
+ * 统一的计算函数
+ * @param sourceField 触发计算的字段名
+ * @param value 输入的值
+ */
+const calculateAll = (sourceField: string, value: number) => {
+  if (isUpdating) return;
 
-  updatingField = 'number';
-  billion.value = divide(value, 1000000000);
-  million.value = divide(value, 1000000);
-  thousand.value = divide(value, 1000);
-  wan.value = divide(value, 10000);
-  yi.value = divide(value, 100000000);
-  updatingField = '';
+  isUpdating = true;
+
+  let baseNumber: number;
+
+  // 根据源字段计算基础数字
+  switch (sourceField) {
+    case 'number':
+      baseNumber = value;
+      break;
+    case 'billion':
+      baseNumber = times(value, 1000000000);
+      break;
+    case 'million':
+      baseNumber = times(value, 1000000);
+      break;
+    case 'thousand':
+      baseNumber = times(value, 1000);
+      break;
+    case 'wan':
+      baseNumber = times(value, 10000);
+      break;
+    case 'yi':
+      baseNumber = times(value, 100000000);
+      break;
+    default:
+      isUpdating = false;
+      return;
+  }
+
+  // 统一计算所有转换值
+  number.value = baseNumber;
+  billion.value = divide(baseNumber, 1000000000);
+  million.value = divide(baseNumber, 1000000);
+  thousand.value = divide(baseNumber, 1000);
+  wan.value = divide(baseNumber, 10000);
+  yi.value = divide(baseNumber, 100000000);
+
+  isUpdating = false;
 };
 
-const calculateFromBillion = (value: number) => {
-  if (updatingField === 'billion') return;
-
-  const num = times(value, 1000000000);
-  updatingField = 'billion';
-  number.value = num;
-  million.value = times(value, 1000);
-  thousand.value = times(value, 1000000);
-  wan.value = times(value, 100000);
-  yi.value = times(value, 10);
-  updatingField = '';
+// 输入事件处理函数
+const handleNumberInput = (value: number) => {
+  if (!Number.isNaN(value)) {
+    calculateAll('number', value);
+  }
 };
 
-const calculateFromMillion = (value: number) => {
-  if (updatingField === 'million') return;
-
-  const num = times(value, 1000000);
-  updatingField = 'million';
-  number.value = num;
-  billion.value = divide(value, 1000);
-  thousand.value = times(value, 1000);
-  wan.value = times(value, 100);
-  yi.value = divide(value, 100);
-  updatingField = '';
+const handleBillionInput = (value: number) => {
+  if (!Number.isNaN(value)) {
+    calculateAll('billion', value);
+  }
 };
 
-const calculateFromThousand = (value: number) => {
-  if (updatingField === 'thousand') return;
-
-  const num = times(value, 1000);
-  updatingField = 'thousand';
-  number.value = num;
-  billion.value = divide(value, 1000000);
-  million.value = divide(value, 1000);
-  wan.value = divide(value, 10);
-  yi.value = divide(value, 100000);
-  updatingField = '';
+const handleMillionInput = (value: number) => {
+  if (!Number.isNaN(value)) {
+    calculateAll('million', value);
+  }
 };
 
-const calculateFromWan = (value: number) => {
-  if (updatingField === 'wan') return;
-
-  const num = times(value, 10000);
-  updatingField = 'wan';
-  number.value = num;
-  billion.value = divide(value, 100000);
-  million.value = divide(value, 100);
-  thousand.value = times(value, 10);
-  yi.value = divide(value, 10000);
-  updatingField = '';
+const handleThousandInput = (value: number) => {
+  if (!Number.isNaN(value)) {
+    calculateAll('thousand', value);
+  }
 };
 
-const calculateFromYi = (value: number) => {
-  if (updatingField === 'yi') return;
-
-  const num = times(value, 100000000);
-  updatingField = 'yi';
-  number.value = num;
-  billion.value = times(value, 10);
-  million.value = times(value, 10000);
-  thousand.value = times(value, 100000);
-  wan.value = times(value, 10000);
-  updatingField = '';
+const handleWanInput = (value: number) => {
+  if (!Number.isNaN(value)) {
+    calculateAll('wan', value);
+  }
 };
 
-// 监听各个输入框的变化
-watch(number, (newValue) => {
-  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
-    calculateFromNumber(newValue);
+const handleYiInput = (value: number) => {
+  if (!Number.isNaN(value)) {
+    calculateAll('yi', value);
   }
-});
-
-watch(billion, (newValue) => {
-  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
-    calculateFromBillion(newValue);
-  }
-});
-
-watch(million, (newValue) => {
-  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
-    calculateFromMillion(newValue);
-  }
-});
-
-watch(thousand, (newValue) => {
-  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
-    calculateFromThousand(newValue);
-  }
-});
-
-watch(wan, (newValue) => {
-  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
-    calculateFromWan(newValue);
-  }
-});
-
-watch(yi, (newValue) => {
-  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
-    calculateFromYi(newValue);
-  }
-});
+};
 </script>
 
 <template>
   <!-- 原始数字 -->
   <div class="input-warp">
     <ValueInput
-      v-model:value="number"
+      :value="number"
       input-class="center width-240"
       type="number"
       placeholder="请输入数字"
+      @update:value="handleNumberInput"
     />
   </div>
 
   <!-- Billion -->
   <div class="input-warp">
     <ValueInput
-      v-model:value="billion"
+      :value="billion"
       input-class="center width-100"
       type="number"
       placeholder="0"
+      @update:value="handleBillionInput"
     />
     <div class="suffixes">
       B (billion)
@@ -157,10 +129,11 @@ watch(yi, (newValue) => {
   <!-- Million -->
   <div class="input-warp">
     <ValueInput
-      v-model:value="million"
+      :value="million"
       input-class="center width-100"
       type="number"
       placeholder="0"
+      @update:value="handleMillionInput"
     />
     <div class="suffixes">
       M (million)
@@ -170,10 +143,11 @@ watch(yi, (newValue) => {
   <!-- Thousand -->
   <div class="input-warp">
     <ValueInput
-      v-model:value="thousand"
+      :value="thousand"
       input-class="center width-100"
       type="number"
       placeholder="0"
+      @update:value="handleThousandInput"
     />
     <div class="suffixes">
       K (thousand)
@@ -183,10 +157,11 @@ watch(yi, (newValue) => {
   <!-- Wan -->
   <div class="input-warp">
     <ValueInput
-      v-model:value="wan"
+      :value="wan"
       input-class="center width-100"
       type="number"
       placeholder="0"
+      @update:value="handleWanInput"
     />
     <div class="suffixes">
       万
@@ -196,10 +171,11 @@ watch(yi, (newValue) => {
   <!-- Yi -->
   <div class="input-warp">
     <ValueInput
-      v-model:value="yi"
+      :value="yi"
       input-class="center width-100"
       type="number"
       placeholder="0"
+      @update:value="handleYiInput"
     />
     <div class="suffixes">
       亿
