@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const number = ref(0);
 const billion = ref(0);
@@ -8,9 +8,123 @@ const thousand = ref(0);
 const wan = ref(0);
 const yi = ref(0);
 
-/* 计算 */
-// const onCalc = () => {
-// };
+// 记录当前正在更新的字段，避免无限循环
+let updatingField = '';
+
+/* 计算函数 */
+const calculateFromNumber = (value: number) => {
+  if (updatingField === 'number') return;
+
+  updatingField = 'number';
+  billion.value = value / 1000000000;
+  million.value = value / 1000000;
+  thousand.value = value / 1000;
+  wan.value = value / 10000;
+  yi.value = value / 100000000;
+  updatingField = '';
+};
+
+const calculateFromBillion = (value: number) => {
+  if (updatingField === 'billion') return;
+
+  const num = value * 1000000000;
+  updatingField = 'billion';
+  number.value = num;
+  million.value = value * 1000;
+  thousand.value = value * 1000000;
+  wan.value = value * 100000;
+  yi.value = value * 10;
+  updatingField = '';
+};
+
+const calculateFromMillion = (value: number) => {
+  if (updatingField === 'million') return;
+
+  const num = value * 1000000;
+  updatingField = 'million';
+  number.value = num;
+  billion.value = value / 1000;
+  thousand.value = value * 1000;
+  wan.value = value * 100;
+  yi.value = value / 100;
+  updatingField = '';
+};
+
+const calculateFromThousand = (value: number) => {
+  if (updatingField === 'thousand') return;
+
+  const num = value * 1000;
+  updatingField = 'thousand';
+  number.value = num;
+  billion.value = value / 1000000;
+  million.value = value / 1000;
+  wan.value = value / 10;
+  yi.value = value / 100000;
+  updatingField = '';
+};
+
+const calculateFromWan = (value: number) => {
+  if (updatingField === 'wan') return;
+
+  const num = value * 10000;
+  updatingField = 'wan';
+  number.value = num;
+  billion.value = value / 100000;
+  million.value = value / 100;
+  thousand.value = value * 10;
+  yi.value = value / 10000;
+  updatingField = '';
+};
+
+const calculateFromYi = (value: number) => {
+  if (updatingField === 'yi') return;
+
+  const num = value * 100000000;
+  updatingField = 'yi';
+  number.value = num;
+  billion.value = value * 10;
+  million.value = value * 10000;
+  thousand.value = value * 100000;
+  wan.value = value * 10000;
+  updatingField = '';
+};
+
+// 监听各个输入框的变化
+watch(number, (newValue) => {
+  if (newValue !== null && newValue !== undefined) {
+    calculateFromNumber(newValue);
+  }
+});
+
+watch(billion, (newValue) => {
+  if (newValue !== null && newValue !== undefined) {
+    calculateFromBillion(newValue);
+  }
+});
+
+watch(million, (newValue) => {
+  if (newValue !== null && newValue !== undefined) {
+    calculateFromMillion(newValue);
+  }
+});
+
+watch(thousand, (newValue) => {
+  if (newValue !== null && newValue !== undefined) {
+    calculateFromThousand(newValue);
+  }
+});
+
+watch(wan, (newValue) => {
+  if (newValue !== null && newValue !== undefined) {
+    calculateFromWan(newValue);
+  }
+});
+
+watch(yi, (newValue) => {
+  if (newValue !== null && newValue !== undefined) {
+    calculateFromYi(newValue);
+  }
+});
 </script>
 
 <template>
@@ -20,6 +134,7 @@ const yi = ref(0);
       v-model:value="number"
       input-class="center width-240"
       type="number"
+      placeholder="请输入数字"
     />
   </div>
 
@@ -29,6 +144,7 @@ const yi = ref(0);
       v-model:value="billion"
       input-class="center width-100"
       type="number"
+      placeholder="0"
     />
     <div class="suffixes">
       B (billion)
@@ -41,6 +157,7 @@ const yi = ref(0);
       v-model:value="million"
       input-class="center width-100"
       type="number"
+      placeholder="0"
     />
     <div class="suffixes">
       M (million)
@@ -53,6 +170,7 @@ const yi = ref(0);
       v-model:value="thousand"
       input-class="center width-100"
       type="number"
+      placeholder="0"
     />
     <div class="suffixes">
       K (thousand)
@@ -65,6 +183,7 @@ const yi = ref(0);
       v-model:value="wan"
       input-class="center width-100"
       type="number"
+      placeholder="0"
     />
     <div class="suffixes">
       万
@@ -77,6 +196,7 @@ const yi = ref(0);
       v-model:value="yi"
       input-class="center width-100"
       type="number"
+      placeholder="0"
     />
     <div class="suffixes">
       亿
