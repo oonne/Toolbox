@@ -73,4 +73,10 @@ label{
 .width-40{
   width: 40px;
 }
+.width-100{
+  width: 100px;
+}
+.width-240{
+  width: 240px;
+}
 </style>

@@ -1,115 +1,98 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import CryptoJS from 'crypto-js';
-import type { SelectOption, Formatter } from '@/types/type';
 
-const input = ref('');
-const salt = ref('');
-const iterations = ref(1);
-const output = ref('');
-
-// 秘钥长度
-const sizeSelectOptions: SelectOption[] = [
-  {
-    value: 128 / 32,
-    name: '128',
-  },
-  {
-    value: 256 / 32,
-    name: '256',
-  },
-  {
-    value: 512 / 32,
-    name: '512',
-  },
-];
-const size = ref(256 / 32);
-
-// 输出格式
-const outputFormatterSelectOptions: SelectOption[] = [
-  {
-    value: 'Base64',
-    name: 'Base64',
-  },
-  {
-    value: 'Hex',
-    name: 'Hex',
-  },
-];
-const outputFormatter = ref('Hex');
+const number = ref(0);
+const billion = ref(0);
+const million = ref(0);
+const thousand = ref(0);
+const wan = ref(0);
+const yi = ref(0);
 
 /* 计算 */
-const onCalc = () => {
-  const iterationsTimes = Math.ceil(iterations.value);
-  const key = CryptoJS.PBKDF2(input.value, salt.value, {
-    keySize: size.value,
-    iterations: iterationsTimes,
-  });
-
-  output.value = key.toString(CryptoJS.enc[outputFormatter.value as Formatter]);
-};
+// const onCalc = () => {
+// };
 </script>
 
 <template>
+  <!-- 原始数字 -->
   <div class="input-warp">
-    <TextInput
-      v-model:text.lazy="input"
-      text-area-class="min-height-6"
-      placeholder="口令"
-    />
-    <TextInput
-      v-model:text.lazy="salt"
-      text-area-class="min-height-6"
-      placeholder="盐"
-    />
-  </div>
-  <div class="button-warp">
     <ValueInput
-      v-model:value="iterations"
-      input-class="center width-40"
+      v-model:value="number"
+      input-class="center width-240"
       type="number"
-      label="迭代次数"
-    />
-    <SelectInput
-      v-model:selected="size"
-      label="模式"
-      :options="sizeSelectOptions"
-    />
-    <SelectInput
-      v-model:selected="outputFormatter"
-      label="输出"
-      :options="outputFormatterSelectOptions"
-    />
-    <ConfirmButton
-      text="计算"
-      :disable="input==='' || salt==='' || iterations<=0"
-      @click="onCalc"
     />
   </div>
-  <TextInput
-    v-if="!!output"
-    placeholder="秘钥"
-    :text="output"
-    readonly
-  />
+
+  <!-- Billion -->
+  <div class="input-warp">
+    <ValueInput
+      v-model:value="billion"
+      input-class="center width-100"
+      type="number"
+    />
+    <div class="suffixes">
+      B (billion)
+    </div>
+  </div>
+
+  <!-- Million -->
+  <div class="input-warp">
+    <ValueInput
+      v-model:value="million"
+      input-class="center width-100"
+      type="number"
+    />
+    <div class="suffixes">
+      M (million)
+    </div>
+  </div>
+
+  <!-- Thousand -->
+  <div class="input-warp">
+    <ValueInput
+      v-model:value="thousand"
+      input-class="center width-100"
+      type="number"
+    />
+    <div class="suffixes">
+      K (thousand)
+    </div>
+  </div>
+
+  <!-- Wan -->
+  <div class="input-warp">
+    <ValueInput
+      v-model:value="wan"
+      input-class="center width-100"
+      type="number"
+    />
+    <div class="suffixes">
+      万
+    </div>
+  </div>
+
+  <!-- Yi -->
+  <div class="input-warp">
+    <ValueInput
+      v-model:value="yi"
+      input-class="center width-100"
+      type="number"
+    />
+    <div class="suffixes">
+      亿
+    </div>
+  </div>
 </template>
 
 <style scoped>
 .input-warp{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   flex-flow: wrap;
 }
 
-.button-warp{
-  display: flex;
-  justify-content: flex-end;
+.suffixes{
+  width: 140px;
 }
-@media screen and (max-width: 680px) {
-  .button-warp{
-    flex-direction: column;
-    align-items: end;
-  }
-}
-
 </style>
