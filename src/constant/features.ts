@@ -51,6 +51,11 @@ const featuresList: Features[] = [
     label: '口令生成器',
     category: ['All', 'Other'],
   },
+  {
+    name: 'NumberConverter',
+    label: '大数转换',
+    category: ['All', 'Other'],
+  },
 ];
 
 export default featuresList;

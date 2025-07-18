@@ -45,6 +45,10 @@ const pages: Page[] = [
     path: '/password',
     pageName: 'Password',
   },
+  {
+    path: '/number-converter',
+    pageName: 'NumberConverter',
+  },
 ];
 
 export default pages;
