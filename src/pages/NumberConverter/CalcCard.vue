@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import { Cal } from '@/utils/index';
+
+const { times, divide } = Cal;
 
 const number = ref(0);
 const billion = ref(0);
@@ -16,112 +19,112 @@ const calculateFromNumber = (value: number) => {
   if (updatingField === 'number') return;
 
   updatingField = 'number';
-  billion.value = value / 1000000000;
-  million.value = value / 1000000;
-  thousand.value = value / 1000;
-  wan.value = value / 10000;
-  yi.value = value / 100000000;
+  billion.value = divide(value, 1000000000);
+  million.value = divide(value, 1000000);
+  thousand.value = divide(value, 1000);
+  wan.value = divide(value, 10000);
+  yi.value = divide(value, 100000000);
   updatingField = '';
 };
 
 const calculateFromBillion = (value: number) => {
   if (updatingField === 'billion') return;
 
-  const num = value * 1000000000;
+  const num = times(value, 1000000000);
   updatingField = 'billion';
   number.value = num;
-  million.value = value * 1000;
-  thousand.value = value * 1000000;
-  wan.value = value * 100000;
-  yi.value = value * 10;
+  million.value = times(value, 1000);
+  thousand.value = times(value, 1000000);
+  wan.value = times(value, 100000);
+  yi.value = times(value, 10);
   updatingField = '';
 };
 
 const calculateFromMillion = (value: number) => {
   if (updatingField === 'million') return;
 
-  const num = value * 1000000;
+  const num = times(value, 1000000);
   updatingField = 'million';
   number.value = num;
-  billion.value = value / 1000;
-  thousand.value = value * 1000;
-  wan.value = value * 100;
-  yi.value = value / 100;
+  billion.value = divide(value, 1000);
+  thousand.value = times(value, 1000);
+  wan.value = times(value, 100);
+  yi.value = divide(value, 100);
   updatingField = '';
 };
 
 const calculateFromThousand = (value: number) => {
   if (updatingField === 'thousand') return;
 
-  const num = value * 1000;
+  const num = times(value, 1000);
   updatingField = 'thousand';
   number.value = num;
-  billion.value = value / 1000000;
-  million.value = value / 1000;
-  wan.value = value / 10;
-  yi.value = value / 100000;
+  billion.value = divide(value, 1000000);
+  million.value = divide(value, 1000);
+  wan.value = divide(value, 10);
+  yi.value = divide(value, 100000);
   updatingField = '';
 };
 
 const calculateFromWan = (value: number) => {
   if (updatingField === 'wan') return;
 
-  const num = value * 10000;
+  const num = times(value, 10000);
   updatingField = 'wan';
   number.value = num;
-  billion.value = value / 100000;
-  million.value = value / 100;
-  thousand.value = value * 10;
-  yi.value = value / 10000;
+  billion.value = divide(value, 100000);
+  million.value = divide(value, 100);
+  thousand.value = times(value, 10);
+  yi.value = divide(value, 10000);
   updatingField = '';
 };
 
 const calculateFromYi = (value: number) => {
   if (updatingField === 'yi') return;
 
-  const num = value * 100000000;
+  const num = times(value, 100000000);
   updatingField = 'yi';
   number.value = num;
-  billion.value = value * 10;
-  million.value = value * 10000;
-  thousand.value = value * 100000;
-  wan.value = value * 10000;
+  billion.value = times(value, 10);
+  million.value = times(value, 10000);
+  thousand.value = times(value, 100000);
+  wan.value = times(value, 10000);
   updatingField = '';
 };
 
 // 监听各个输入框的变化
 watch(number, (newValue) => {
-  if (newValue !== null && newValue !== undefined) {
+  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
     calculateFromNumber(newValue);
   }
 });
 
 watch(billion, (newValue) => {
-  if (newValue !== null && newValue !== undefined) {
+  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
     calculateFromBillion(newValue);
   }
 });
 
 watch(million, (newValue) => {
-  if (newValue !== null && newValue !== undefined) {
+  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
     calculateFromMillion(newValue);
   }
 });
 
 watch(thousand, (newValue) => {
-  if (newValue !== null && newValue !== undefined) {
+  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
     calculateFromThousand(newValue);
   }
 });
 
 watch(wan, (newValue) => {
-  if (newValue !== null && newValue !== undefined) {
+  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
     calculateFromWan(newValue);
   }
 });
 
 watch(yi, (newValue) => {
-  if (newValue !== null && newValue !== undefined) {
+  if (newValue !== null && newValue !== undefined && !Number.isNaN(newValue)) {
     calculateFromYi(newValue);
   }
 });
