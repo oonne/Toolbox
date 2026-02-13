@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CryptoJS from 'crypto-js';
+import message from '@/components/message';
 import type { SelectOption, AESMode, AESPadding } from '@/types/type';
 
 const secret = ref('');
@@ -64,13 +65,18 @@ const pad = ref('Pkcs7');
 
 /* 解密 */
 const onDecrypt = () => {
-  const decrypt = CryptoJS.AES.decrypt(input.value, CryptoJS.enc.Utf8.parse(secret.value), {
-    iv: CryptoJS.enc.Utf8.parse(iv.value),
-    mode: CryptoJS.mode[mode.value as AESMode],
-    padding: CryptoJS.pad[pad.value as AESPadding],
-  });
+  try {
+    const decrypt = CryptoJS.AES.decrypt(input.value, CryptoJS.enc.Utf8.parse(secret.value), {
+      iv: CryptoJS.enc.Utf8.parse(iv.value),
+      mode: CryptoJS.mode[mode.value as AESMode],
+      padding: CryptoJS.pad[pad.value as AESPadding],
+    });
 
-  output.value = CryptoJS.enc.Utf8.stringify(decrypt);
+    output.value = CryptoJS.enc.Utf8.stringify(decrypt);
+    message('解密成功');
+  } catch (error) {
+    message(`解密失败: ${error}`);
+  }
 };
 
 </script>

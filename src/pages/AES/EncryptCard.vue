@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import CryptoJS from 'crypto-js';
+import message from '@/components/message';
 import type { SelectOption, AESMode, AESPadding } from '@/types/type';
 
 const secret = ref('');
@@ -64,13 +65,18 @@ const pad = ref('Pkcs7');
 
 /* 加密 */
 const onEncrypt = () => {
-  const encrypt = CryptoJS.AES.encrypt(input.value, CryptoJS.enc.Utf8.parse(secret.value), {
-    iv: CryptoJS.enc.Utf8.parse(iv.value),
-    mode: CryptoJS.mode[mode.value as AESMode],
-    padding: CryptoJS.pad[pad.value as AESPadding],
-  });
+  try {
+    const encrypt = CryptoJS.AES.encrypt(input.value, CryptoJS.enc.Utf8.parse(secret.value), {
+      iv: CryptoJS.enc.Utf8.parse(iv.value),
+      mode: CryptoJS.mode[mode.value as AESMode],
+      padding: CryptoJS.pad[pad.value as AESPadding],
+    });
 
-  output.value = encrypt.toString();
+    output.value = encrypt.toString();
+    message('加密成功');
+  } catch (error) {
+    message(`加密失败: ${error}`);
+  }
 };
 
 </script>
@@ -82,7 +88,7 @@ const onEncrypt = () => {
     placeholder="秘钥"
   />
   <TextInput
-    v-show="mode!=='ECB'"
+    v-show="mode !== 'ECB'"
     v-model:text.lazy="iv"
     text-area-class="min-height-6"
     placeholder="初始化向量（IV）"
@@ -104,7 +110,7 @@ const onEncrypt = () => {
     />
     <ConfirmButton
       text="加密"
-      :disable="secret==='' || input==='' || (mode!=='ECB' && iv==='')"
+      :disable="secret === '' || input === '' || (mode !== 'ECB' && iv === '')"
       @click="onEncrypt"
     />
   </div>
@@ -117,13 +123,13 @@ const onEncrypt = () => {
 </template>
 
 <style scoped>
-.button-warp{
+.button-warp {
   display: flex;
   justify-content: flex-end;
 }
 
 @media screen and (max-width: 480px) {
-  .button-warp{
+  .button-warp {
     flex-direction: column;
     align-items: end;
   }
