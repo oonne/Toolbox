@@ -25,6 +25,14 @@ const sizeSelectOptions: SelectOption[] = [
 ];
 const size = ref(256 / 32);
 
+// 哈希算法
+const hasherSelectOptions: SelectOption[] = [
+  { value: 'SHA1', name: 'SHA1' },
+  { value: 'SHA256', name: 'SHA256' },
+  { value: 'SHA512', name: 'SHA512' },
+];
+const hasher = ref<'SHA1' | 'SHA256' | 'SHA512'>('SHA1');
+
 // 输出格式
 const outputFormatterSelectOptions: SelectOption[] = [
   {
@@ -38,12 +46,19 @@ const outputFormatterSelectOptions: SelectOption[] = [
 ];
 const outputFormatter = ref('Hex');
 
+const hasherAlgoMap = {
+  SHA1: CryptoJS.algo.SHA1,
+  SHA256: CryptoJS.algo.SHA256,
+  SHA512: CryptoJS.algo.SHA512,
+} as const;
+
 /* 计算 */
 const onCalc = () => {
   const iterationsTimes = Math.ceil(iterations.value);
   const key = CryptoJS.PBKDF2(input.value, salt.value, {
     keySize: size.value,
     iterations: iterationsTimes,
+    hasher: hasherAlgoMap[hasher.value],
   });
 
   output.value = key.toString(CryptoJS.enc[outputFormatter.value as Formatter]);
@@ -76,8 +91,13 @@ const onCalc = () => {
       :options="sizeSelectOptions"
     />
     <SelectInput
+      v-model:selected="hasher"
+      label="哈希算法"
+      :options="hasherSelectOptions"
+    />
+    <SelectInput
       v-model:selected="outputFormatter"
-      label="输出"
+      label="输出格式"
       :options="outputFormatterSelectOptions"
     />
     <ConfirmButton
