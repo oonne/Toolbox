@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <ContentCard>
     <h2>英文</h2>
@@ -29,6 +26,9 @@
     </ul>
   </ContentCard>
 </template>
+
+<script setup lang="ts">
+</script>
 
 <style scoped>
 </style>

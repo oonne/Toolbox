@@ -1,3 +1,32 @@
+<template>
+  <div class="button-warp">
+    <SelectInput
+      v-model:selected="keyUsages"
+      label="用途"
+      :options="keyUsagesSelectOptions"
+    />
+    <SelectInput
+      v-model:selected="keyLen"
+      label="长度"
+      :options="keyLenSelectOptions"
+    />
+    <ConfirmButton
+      text="生成"
+      @click="generate"
+    />
+  </div>
+  <TextInput
+    v-if="!!publicKey"
+    :text="publicKey"
+    readonly
+  />
+  <TextInput
+    v-if="!!privateKey"
+    :text="privateKey"
+    readonly
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { SelectOption } from '@/types/type';
@@ -116,35 +145,6 @@ const generate = async () => {
 };
 
 </script>
-
-<template>
-  <div class="button-warp">
-    <SelectInput
-      v-model:selected="keyUsages"
-      label="用途"
-      :options="keyUsagesSelectOptions"
-    />
-    <SelectInput
-      v-model:selected="keyLen"
-      label="长度"
-      :options="keyLenSelectOptions"
-    />
-    <ConfirmButton
-      text="生成"
-      @click="generate"
-    />
-  </div>
-  <TextInput
-    v-if="!!publicKey"
-    :text="publicKey"
-    readonly
-  />
-  <TextInput
-    v-if="!!privateKey"
-    :text="privateKey"
-    readonly
-  />
-</template>
 
 <style scoped>
 .button-warp{

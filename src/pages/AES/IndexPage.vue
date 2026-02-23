@@ -1,3 +1,16 @@
+<template>
+  <HeaderBar title="AES 对称加密算法" />
+
+  <!-- 功能 -->
+  <TabsNav
+    default="decrypt"
+    :tabs="tabs"
+  />
+
+  <!-- 简介 -->
+  <IntroCard />
+</template>
+
 <script setup lang="ts">
 import IntroCard from './IntroCard.vue';
 import DecryptCard from './DecryptCard.vue';
@@ -17,19 +30,6 @@ const tabs: Tab[] = [
   },
 ];
 </script>
-
-<template>
-  <HeaderBar title="AES 对称加密算法" />
-
-  <!-- 功能 -->
-  <TabsNav
-    default="decrypt"
-    :tabs="tabs"
-  />
-
-  <!-- 简介 -->
-  <IntroCard />
-</template>
 
 <style scoped>
 </style>

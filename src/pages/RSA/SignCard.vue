@@ -1,3 +1,33 @@
+<template>
+  <TextInput
+    v-model:text.lazy="privkey"
+    text-area-class="min-height-10"
+    placeholder="私钥"
+  />
+  <TextInput
+    v-model:text.lazy="input"
+    placeholder="内容"
+  />
+  <div class="button-warp">
+    <SelectInput
+      v-model:selected="hashMethod"
+      label="哈希算法"
+      :options="hashSelectOptions"
+    />
+    <ConfirmButton
+      text="签名"
+      :disable="input==='' || privkey===''"
+      @click="onSign"
+    />
+  </div>
+  <TextInput
+    v-if="!!output"
+    placeholder="签名"
+    :text="output"
+    readonly
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import { JSEncrypt } from 'jsencrypt';
@@ -53,36 +83,6 @@ const onSign = () => {
 };
 
 </script>
-
-<template>
-  <TextInput
-    v-model:text.lazy="privkey"
-    text-area-class="min-height-10"
-    placeholder="私钥"
-  />
-  <TextInput
-    v-model:text.lazy="input"
-    placeholder="内容"
-  />
-  <div class="button-warp">
-    <SelectInput
-      v-model:selected="hashMethod"
-      label="哈希算法"
-      :options="hashSelectOptions"
-    />
-    <ConfirmButton
-      text="签名"
-      :disable="input==='' || privkey===''"
-      @click="onSign"
-    />
-  </div>
-  <TextInput
-    v-if="!!output"
-    placeholder="签名"
-    :text="output"
-    readonly
-  />
-</template>
 
 <style scoped>
 .button-warp{

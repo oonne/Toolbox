@@ -1,3 +1,33 @@
+<template>
+  <TextInput
+    v-model:text.lazy="pubkey"
+    text-area-class="min-height-10"
+    placeholder="公钥"
+  />
+  <TextInput
+    v-model:text.lazy="input"
+    :text-area-class="result"
+    placeholder="内容"
+  />
+  <TextInput
+    v-model:text.lazy="output"
+    :text-area-class="result"
+    placeholder="签名"
+  />
+  <div class="button-warp">
+    <SelectInput
+      v-model:selected="hashMethod"
+      label="哈希算法"
+      :options="hashSelectOptions"
+    />
+    <ConfirmButton
+      text="校验"
+      :disable="pubkey==='' || input==='' || output===''"
+      @click="onVerify"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import { JSEncrypt } from 'jsencrypt';
@@ -59,36 +89,6 @@ const onVerify = () => {
 };
 
 </script>
-
-<template>
-  <TextInput
-    v-model:text.lazy="pubkey"
-    text-area-class="min-height-10"
-    placeholder="公钥"
-  />
-  <TextInput
-    v-model:text.lazy="input"
-    :text-area-class="result"
-    placeholder="内容"
-  />
-  <TextInput
-    v-model:text.lazy="output"
-    :text-area-class="result"
-    placeholder="签名"
-  />
-  <div class="button-warp">
-    <SelectInput
-      v-model:selected="hashMethod"
-      label="哈希算法"
-      :options="hashSelectOptions"
-    />
-    <ConfirmButton
-      text="校验"
-      :disable="pubkey==='' || input==='' || output===''"
-      @click="onVerify"
-    />
-  </div>
-</template>
 
 <style scoped>
 .button-warp{

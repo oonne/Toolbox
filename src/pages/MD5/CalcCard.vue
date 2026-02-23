@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-import CryptoJS from 'crypto-js';
-
-const input = ref('');
-const output = ref('');
-
-/* 计算 */
-const onCalc = () => {
-  output.value = CryptoJS.MD5(input.value).toString();
-};
-</script>
-
 <template>
   <TextInput
     v-model:text.lazy="input"
@@ -32,6 +19,19 @@ const onCalc = () => {
     readonly
   />
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import CryptoJS from 'crypto-js';
+
+const input = ref('');
+const output = ref('');
+
+/* 计算 */
+const onCalc = () => {
+  output.value = CryptoJS.MD5(input.value).toString();
+};
+</script>
 
 <style scoped>
 .button-warp{

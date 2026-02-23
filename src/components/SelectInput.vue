@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { SelectOption } from '../types/type';
-
-defineProps<{
-  selected: string | number;
-  label?: string;
-  options: SelectOption[];
-}>();
-
-defineEmits(['update:selected']);
-</script>
-
 <template>
   <div class="select-warp">
     <label>{{ label }}</label>
@@ -28,6 +16,18 @@ defineEmits(['update:selected']);
     </select>
   </div>
 </template>
+
+<script setup lang="ts">
+import { SelectOption } from '../types/type';
+
+defineProps<{
+  selected: string | number;
+  label?: string;
+  options: SelectOption[];
+}>();
+
+defineEmits(['update:selected']);
+</script>
 
 <style scoped>
 .select-warp{

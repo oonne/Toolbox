@@ -1,3 +1,16 @@
+<template>
+  <HeaderBar title="RSA 非对称加密算法" />
+
+  <!-- 功能 -->
+  <TabsNav
+    default="decrypt"
+    :tabs="tabs"
+  />
+
+  <!-- 简介 -->
+  <IntroCard />
+</template>
+
 <script setup lang="ts">
 import type { Tab } from '@/types/type';
 import IntroCard from './IntroCard.vue';
@@ -35,19 +48,6 @@ const tabs: Tab[] = [
   },
 ];
 </script>
-
-<template>
-  <HeaderBar title="RSA 非对称加密算法" />
-
-  <!-- 功能 -->
-  <TabsNav
-    default="decrypt"
-    :tabs="tabs"
-  />
-
-  <!-- 简介 -->
-  <IntroCard />
-</template>
 
 <style scoped>
 </style>

@@ -1,3 +1,16 @@
+<template>
+  <HeaderBar title="SHA 单向散列函数" />
+
+  <!-- 功能 -->
+  <TabsNav
+    default="sha3"
+    :tabs="tabs"
+  />
+
+  <!-- 简介 -->
+  <IntroCard />
+</template>
+
 <script setup lang="ts">
 import type { Tab } from '@/types/type';
 import IntroCard from './IntroCard.vue';
@@ -17,19 +30,6 @@ const tabs: Tab[] = [
   },
 ];
 </script>
-
-<template>
-  <HeaderBar title="SHA 单向散列函数" />
-
-  <!-- 功能 -->
-  <TabsNav
-    default="sha3"
-    :tabs="tabs"
-  />
-
-  <!-- 简介 -->
-  <IntroCard />
-</template>
 
 <style scoped>
 </style>

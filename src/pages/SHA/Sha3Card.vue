@@ -1,3 +1,30 @@
+<template>
+  <TextInput
+    v-model:text.lazy="input"
+    placeholder="内容"
+  />
+
+  <div class="button-warp">
+    <SelectInput
+      v-model:selected="method"
+      label="算法"
+      :options="methodSelectOptions"
+    />
+    <ConfirmButton
+      text="计算"
+      :disable="input===''"
+      @click="onCalc"
+    />
+  </div>
+
+  <TextInput
+    v-if="!!output"
+    placeholder="哈希值"
+    :text="output"
+    readonly
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import SHA3 from 'js-sha3';
@@ -36,33 +63,6 @@ const onCalc = () => {
   output.value = SHA3[method.value as HashMethod](input.value);
 };
 </script>
-
-<template>
-  <TextInput
-    v-model:text.lazy="input"
-    placeholder="内容"
-  />
-
-  <div class="button-warp">
-    <SelectInput
-      v-model:selected="method"
-      label="算法"
-      :options="methodSelectOptions"
-    />
-    <ConfirmButton
-      text="计算"
-      :disable="input===''"
-      @click="onCalc"
-    />
-  </div>
-
-  <TextInput
-    v-if="!!output"
-    placeholder="哈希值"
-    :text="output"
-    readonly
-  />
-</template>
 
 <style scoped>
 .button-warp{

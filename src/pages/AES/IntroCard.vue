@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <ContentCard>
     <h2>简介</h2>
@@ -80,6 +77,9 @@
     </table>
   </ContentCard>
 </template>
+
+<script setup lang="ts">
+</script>
 
 <style scoped>
 </style>

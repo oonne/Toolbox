@@ -1,3 +1,52 @@
+<template>
+  <div class="input-warp">
+    <TextInput
+      v-model:text.lazy="input"
+      text-area-class="min-height-6"
+      placeholder="口令"
+    />
+    <TextInput
+      v-model:text.lazy="salt"
+      text-area-class="min-height-6"
+      placeholder="盐"
+    />
+  </div>
+  <div class="button-warp">
+    <SelectInput
+      v-model:selected="n"
+      label="n (计算难度)"
+      :options="nSelectOptions"
+    />
+    <SelectInput
+      v-model:selected="r"
+      label="r (内存消耗)"
+      :options="rSelectOptions"
+    />
+    <SelectInput
+      v-model:selected="p"
+      label="p (并行计算)"
+      :options="pSelectOptions"
+    />
+    <ValueInput
+      v-model:value="dkLen"
+      input-class="center width-40"
+      type="number"
+      label="输出长度"
+    />
+    <ConfirmButton
+      text="计算"
+      :disable="loading || input==='' || salt==='' || !dkLen"
+      @click="onCalc"
+    />
+  </div>
+  <TextInput
+    v-if="!!output"
+    placeholder="秘钥"
+    :text="output"
+    readonly
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import ScryptJS from 'scrypt-js';
@@ -95,55 +144,6 @@ const onCalc = async () => {
   output.value = Array.from(res as Uint8Array).map((v) => v.toString(16).padStart(2, '0')).join('');
 };
 </script>
-
-<template>
-  <div class="input-warp">
-    <TextInput
-      v-model:text.lazy="input"
-      text-area-class="min-height-6"
-      placeholder="口令"
-    />
-    <TextInput
-      v-model:text.lazy="salt"
-      text-area-class="min-height-6"
-      placeholder="盐"
-    />
-  </div>
-  <div class="button-warp">
-    <SelectInput
-      v-model:selected="n"
-      label="n (计算难度)"
-      :options="nSelectOptions"
-    />
-    <SelectInput
-      v-model:selected="r"
-      label="r (内存消耗)"
-      :options="rSelectOptions"
-    />
-    <SelectInput
-      v-model:selected="p"
-      label="p (并行计算)"
-      :options="pSelectOptions"
-    />
-    <ValueInput
-      v-model:value="dkLen"
-      input-class="center width-40"
-      type="number"
-      label="输出长度"
-    />
-    <ConfirmButton
-      text="计算"
-      :disable="loading || input==='' || salt==='' || !dkLen"
-      @click="onCalc"
-    />
-  </div>
-  <TextInput
-    v-if="!!output"
-    placeholder="秘钥"
-    :text="output"
-    readonly
-  />
-</template>
 
 <style scoped>
 .input-warp{

@@ -1,11 +1,11 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <div class="content-card">
     <slot />
   </div>
 </template>
+
+<script setup lang="ts">
+</script>
 
 <style scoped>
 .content-card{

@@ -1,3 +1,14 @@
+<template>
+  <transition name="fade">
+    <div
+      v-if="show"
+      class="toast"
+    >
+      {{ text }}
+    </div>
+  </transition>
+</template>
+
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { Utils } from '../utils/index';
@@ -15,17 +26,6 @@ onMounted(async () => {
 });
 
 </script>
-
-<template>
-  <transition name="fade">
-    <div
-      v-if="show"
-      class="toast"
-    >
-      {{ text }}
-    </div>
-  </transition>
-</template>
 
 <style scoped>
 .toast{

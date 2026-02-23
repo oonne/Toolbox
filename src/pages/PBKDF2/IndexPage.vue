@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import IntroCard from './IntroCard.vue';
-import CalcCard from './CalcCard.vue';
-</script>
-
 <template>
   <HeaderBar title="PBKDF2 秘钥派生函数" />
 
@@ -14,6 +9,11 @@ import CalcCard from './CalcCard.vue';
   <!-- 简介 -->
   <IntroCard />
 </template>
+
+<script setup lang="ts">
+import IntroCard from './IntroCard.vue';
+import CalcCard from './CalcCard.vue';
+</script>
 
 <style scoped>
 </style>

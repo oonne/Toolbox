@@ -1,7 +1,3 @@
-<script setup lang="ts">
-defineProps<{ title: string }>();
-</script>
-
 <template>
   <header>
     <router-link
@@ -13,6 +9,10 @@ defineProps<{ title: string }>();
     <h1>{{ title }}</h1>
   </header>
 </template>
+
+<script setup lang="ts">
+defineProps<{ title: string }>();
+</script>
 
 <style scoped>
 header{

@@ -1,3 +1,20 @@
+<template>
+  <label
+    class="drop"
+    @dragenter.prevent
+    @dragleave.prevent
+    @dragover.prevent
+    @drop.prevent="onFileDrop"
+  >
+    {{ placeholder }}
+    <input
+      v-show="false"
+      type="file"
+      @change="onFileChange"
+    >
+  </label>
+</template>
+
 <script setup lang="ts">
 import { HTMLInputEvent } from '../types/type';
 
@@ -27,23 +44,6 @@ const onFileDrop = async (event: DragEvent) => {
   emit('change', event.dataTransfer.files[0]);
 };
 </script>
-
-<template>
-  <label
-    class="drop"
-    @dragenter.prevent
-    @dragleave.prevent
-    @dragover.prevent
-    @drop.prevent="onFileDrop"
-  >
-    {{ placeholder }}
-    <input
-      v-show="false"
-      type="file"
-      @change="onFileChange"
-    >
-  </label>
-</template>
 
 <style scoped>
 .drop{

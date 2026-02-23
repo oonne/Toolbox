@@ -1,3 +1,86 @@
+<template>
+  <!-- 原始数字 -->
+  <div class="input-warp">
+    <ValueInput
+      :value="number"
+      input-class="center width-240"
+      type="number"
+      placeholder="请输入数字"
+      @update:value="handleNumberInput"
+    />
+  </div>
+
+  <!-- Billion -->
+  <div class="input-warp">
+    <ValueInput
+      :value="billion"
+      input-class="center width-100"
+      type="number"
+      placeholder="0"
+      @update:value="handleBillionInput"
+    />
+    <div class="suffixes">
+      B (billion)
+    </div>
+  </div>
+
+  <!-- Million -->
+  <div class="input-warp">
+    <ValueInput
+      :value="million"
+      input-class="center width-100"
+      type="number"
+      placeholder="0"
+      @update:value="handleMillionInput"
+    />
+    <div class="suffixes">
+      M (million)
+    </div>
+  </div>
+
+  <!-- Thousand -->
+  <div class="input-warp">
+    <ValueInput
+      :value="thousand"
+      input-class="center width-100"
+      type="number"
+      placeholder="0"
+      @update:value="handleThousandInput"
+    />
+    <div class="suffixes">
+      K (thousand)
+    </div>
+  </div>
+
+  <!-- Wan -->
+  <div class="input-warp">
+    <ValueInput
+      :value="wan"
+      input-class="center width-100"
+      type="number"
+      placeholder="0"
+      @update:value="handleWanInput"
+    />
+    <div class="suffixes">
+      万
+    </div>
+  </div>
+
+  <!-- Yi -->
+  <div class="input-warp">
+    <ValueInput
+      :value="yi"
+      input-class="center width-100"
+      type="number"
+      placeholder="0"
+      @update:value="handleYiInput"
+    />
+    <div class="suffixes">
+      亿
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Cal } from '@/utils/index';
@@ -99,89 +182,6 @@ const handleYiInput = (value: number) => {
   }
 };
 </script>
-
-<template>
-  <!-- 原始数字 -->
-  <div class="input-warp">
-    <ValueInput
-      :value="number"
-      input-class="center width-240"
-      type="number"
-      placeholder="请输入数字"
-      @update:value="handleNumberInput"
-    />
-  </div>
-
-  <!-- Billion -->
-  <div class="input-warp">
-    <ValueInput
-      :value="billion"
-      input-class="center width-100"
-      type="number"
-      placeholder="0"
-      @update:value="handleBillionInput"
-    />
-    <div class="suffixes">
-      B (billion)
-    </div>
-  </div>
-
-  <!-- Million -->
-  <div class="input-warp">
-    <ValueInput
-      :value="million"
-      input-class="center width-100"
-      type="number"
-      placeholder="0"
-      @update:value="handleMillionInput"
-    />
-    <div class="suffixes">
-      M (million)
-    </div>
-  </div>
-
-  <!-- Thousand -->
-  <div class="input-warp">
-    <ValueInput
-      :value="thousand"
-      input-class="center width-100"
-      type="number"
-      placeholder="0"
-      @update:value="handleThousandInput"
-    />
-    <div class="suffixes">
-      K (thousand)
-    </div>
-  </div>
-
-  <!-- Wan -->
-  <div class="input-warp">
-    <ValueInput
-      :value="wan"
-      input-class="center width-100"
-      type="number"
-      placeholder="0"
-      @update:value="handleWanInput"
-    />
-    <div class="suffixes">
-      万
-    </div>
-  </div>
-
-  <!-- Yi -->
-  <div class="input-warp">
-    <ValueInput
-      :value="yi"
-      input-class="center width-100"
-      type="number"
-      placeholder="0"
-      @update:value="handleYiInput"
-    />
-    <div class="suffixes">
-      亿
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .input-warp{

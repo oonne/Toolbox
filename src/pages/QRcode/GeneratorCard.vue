@@ -1,3 +1,15 @@
+<template>
+  <div class="qrcode-warp">
+    <TextInput v-model:text.lazy="input" />
+    <div
+      v-show="!!input"
+      class="qrcode"
+    >
+      <canvas id="canvas" />
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue';
 import qrcode from 'qrcode';
@@ -23,18 +35,6 @@ watch(input, Utils.debounce((text: string) => {
   qrcode.toCanvas(canvas, text);
 }, 300));
 </script>
-
-<template>
-  <div class="qrcode-warp">
-    <TextInput v-model:text.lazy="input" />
-    <div
-      v-show="!!input"
-      class="qrcode"
-    >
-      <canvas id="canvas" />
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .qrcode-warp{

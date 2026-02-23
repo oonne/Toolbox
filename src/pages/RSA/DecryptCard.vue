@@ -1,28 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-import { JSEncrypt } from 'jsencrypt';
-
-const privkey = ref('');
-const input = ref('');
-const output = ref('');
-
-/* 解密 */
-const onDecrypt = () => {
-  output.value = '解密中...';
-
-  const encrypt = new JSEncrypt();
-  encrypt.setPrivateKey(privkey.value);
-  const uncrypted = encrypt.decrypt(input.value);
-
-  if (!uncrypted) {
-    output.value = '解密失败';
-    return;
-  }
-  output.value = uncrypted as string;
-};
-
-</script>
-
 <template>
   <TextInput
     v-model:text.lazy="privkey"
@@ -47,6 +22,31 @@ const onDecrypt = () => {
     readonly
   />
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { JSEncrypt } from 'jsencrypt';
+
+const privkey = ref('');
+const input = ref('');
+const output = ref('');
+
+/* 解密 */
+const onDecrypt = () => {
+  output.value = '解密中...';
+
+  const encrypt = new JSEncrypt();
+  encrypt.setPrivateKey(privkey.value);
+  const uncrypted = encrypt.decrypt(input.value);
+
+  if (!uncrypted) {
+    output.value = '解密失败';
+    return;
+  }
+  output.value = uncrypted as string;
+};
+
+</script>
 
 <style scoped>
 .button-warp{

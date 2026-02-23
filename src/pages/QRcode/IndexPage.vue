@@ -1,3 +1,13 @@
+<template>
+  <HeaderBar title="二维码" />
+
+  <!-- 功能 -->
+  <TabsNav
+    default="generator"
+    :tabs="tabs"
+  />
+</template>
+
 <script setup lang="ts">
 import type { Tab } from '@/types/type';
 import GeneratorCard from './GeneratorCard.vue';
@@ -16,16 +26,6 @@ const tabs: Tab[] = [
   },
 ];
 </script>
-
-<template>
-  <HeaderBar title="二维码" />
-
-  <!-- 功能 -->
-  <TabsNav
-    default="generator"
-    :tabs="tabs"
-  />
-</template>
 
 <style scoped>
 </style>

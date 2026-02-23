@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import type { Link } from '@/types/type';
-
-const refer: Link[] = [
-  {
-    href: 'https://blog.oonne.com/detail/pow',
-    text: '工作量证明',
-  },
-];
-</script>
-
 <template>
   <ContentCard>
     <h2>简介</h2>
@@ -32,6 +21,17 @@ const refer: Link[] = [
     </ul>
   </ContentCard>
 </template>
+
+<script setup lang="ts">
+import type { Link } from '@/types/type';
+
+const refer: Link[] = [
+  {
+    href: 'https://blog.oonne.com/detail/pow',
+    text: '工作量证明',
+  },
+];
+</script>
 
 <style scoped>
 </style>

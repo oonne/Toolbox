@@ -1,18 +1,3 @@
-<script setup lang="ts">
-import type { Link } from '@/types/type';
-
-const refer: Link[] = [
-  {
-    href: 'https://blog.oonne.com/detail/base64',
-    text: 'Base64编码原理及应用',
-  },
-  {
-    href: 'https://developer.mozilla.org/zh-CN/docs/Glossary/Base64',
-    text: 'MDN文档',
-  },
-];
-</script>
-
 <template>
   <ContentCard>
     <h2>简介</h2>
@@ -33,6 +18,21 @@ const refer: Link[] = [
     </ul>
   </ContentCard>
 </template>
+
+<script setup lang="ts">
+import type { Link } from '@/types/type';
+
+const refer: Link[] = [
+  {
+    href: 'https://blog.oonne.com/detail/base64',
+    text: 'Base64编码原理及应用',
+  },
+  {
+    href: 'https://developer.mozilla.org/zh-CN/docs/Glossary/Base64',
+    text: 'MDN文档',
+  },
+];
+</script>
 
 <style scoped>
 </style>

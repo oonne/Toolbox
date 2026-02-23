@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <div class="page">
     <router-view />
@@ -20,6 +17,9 @@
     >工程师加一</a>
   </footer>
 </template>
+
+<script setup lang="ts">
+</script>
 
 <style>
 @import './assets/css/config.css';

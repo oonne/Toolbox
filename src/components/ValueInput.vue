@@ -1,3 +1,18 @@
+<template>
+  <div class="input-warp">
+    <label>{{ label }}</label>
+    <input
+      class="input"
+      :class="inputClass"
+      :value="value"
+      :type="type"
+      :readonly="readonly"
+      :placeholder="placeholder"
+      @input="$emit('update:value', ($event.target as HTMLInputElement).value)"
+    >
+  </div>
+</template>
+
 <script setup lang="ts">
 withDefaults(defineProps<{
   label?: string;
@@ -16,21 +31,6 @@ withDefaults(defineProps<{
 
 defineEmits(['update:value']);
 </script>
-
-<template>
-  <div class="input-warp">
-    <label>{{ label }}</label>
-    <input
-      class="input"
-      :class="inputClass"
-      :value="value"
-      :type="type"
-      :readonly="readonly"
-      :placeholder="placeholder"
-      @input="$emit('update:value', ($event.target as HTMLInputElement).value)"
-    >
-  </div>
-</template>
 
 <style scoped>
 .input-warp{

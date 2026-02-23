@@ -1,19 +1,3 @@
-<script setup lang="ts">
-withDefaults(defineProps<{
-  id?: string;
-  label?: string;
-  value: boolean;
-  inputClass?: string;
-}>(), {
-  id: 'checkbox',
-  label: '',
-  value: false,
-  inputClass: '',
-});
-
-defineEmits(['update:value']);
-</script>
-
 <template>
   <div
     class="input-warp"
@@ -29,6 +13,22 @@ defineEmits(['update:value']);
     <label :for="id">{{ label }}</label>
   </div>
 </template>
+
+<script setup lang="ts">
+withDefaults(defineProps<{
+  id?: string;
+  label?: string;
+  value: boolean;
+  inputClass?: string;
+}>(), {
+  id: 'checkbox',
+  label: '',
+  value: false,
+  inputClass: '',
+});
+
+defineEmits(['update:value']);
+</script>
 
 <style scoped>
 .input-warp{

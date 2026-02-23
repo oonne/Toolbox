@@ -1,3 +1,16 @@
+<template>
+  <HeaderBar title="Base64 编码解码" />
+
+  <!-- 功能 -->
+  <TabsNav
+    default="decode"
+    :tabs="tabs"
+  />
+
+  <!-- 简介 -->
+  <IntroCard />
+</template>
+
 <script setup lang="ts">
 import type { Tab } from '@/types/type';
 import IntroCard from './IntroCard.vue';
@@ -23,19 +36,6 @@ const tabs: Tab[] = [
   },
 ];
 </script>
-
-<template>
-  <HeaderBar title="Base64 编码解码" />
-
-  <!-- 功能 -->
-  <TabsNav
-    default="decode"
-    :tabs="tabs"
-  />
-
-  <!-- 简介 -->
-  <IntroCard />
-</template>
 
 <style scoped>
 </style>

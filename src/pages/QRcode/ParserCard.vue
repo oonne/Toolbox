@@ -1,3 +1,16 @@
+<template>
+  <FileInput
+    placeholder="拖拽图片到此处"
+    @change="parse"
+  />
+
+  <TextInput
+    v-show="!!output"
+    :text="output"
+    readonly
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import qrcodeParser from 'qrcode-parser';
@@ -20,19 +33,6 @@ const parse = async (file: File) => {
   output.value = res;
 };
 </script>
-
-<template>
-  <FileInput
-    placeholder="拖拽图片到此处"
-    @change="parse"
-  />
-
-  <TextInput
-    v-show="!!output"
-    :text="output"
-    readonly
-  />
-</template>
 
 <style scoped>
 .drop{

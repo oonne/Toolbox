@@ -1,3 +1,13 @@
+<template>
+  <FileInput @change="encode" />
+
+  <TextInput
+    v-show="!!output"
+    :text="output"
+    readonly
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 
@@ -14,16 +24,6 @@ const encode = (file: Blob) => {
   reader.readAsDataURL(file);
 };
 </script>
-
-<template>
-  <FileInput @change="encode" />
-
-  <TextInput
-    v-show="!!output"
-    :text="output"
-    readonly
-  />
-</template>
 
 <style scoped>
 </style>

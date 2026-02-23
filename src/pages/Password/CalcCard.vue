@@ -1,35 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-import { Utils } from '@/utils/index';
-
-const checkNum = ref(true);
-const checkCaps = ref(true);
-const checkLower = ref(true);
-const checkPunctuation = ref(false);
-const passLength = ref(8);
-const output = ref('');
-
-/* 生成 */
-const onCalc = () => {
-  const num = '23456789';
-  const caps = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
-  const lower = 'abcdefghjkmnpqrstuvwxyz';
-  const punctuation = '@#%';
-
-  const character = `${checkNum.value ? num : ''}${checkCaps.value ? caps : ''}${checkLower.value ? lower : ''}${checkPunctuation.value ? punctuation : ''}`;
-  if (!character.length) {
-    output.value = '';
-    return;
-  }
-
-  let password = '';
-  for (let i = 0; i < passLength.value; i += 1) {
-    password += character.charAt(Utils.randomWithin(character.length));
-  }
-  output.value = password;
-};
-</script>
-
 <template>
   <div class="button-warp">
     <CheckboxInput
@@ -75,6 +43,38 @@ const onCalc = () => {
     readonly
   />
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { Utils } from '@/utils/index';
+
+const checkNum = ref(true);
+const checkCaps = ref(true);
+const checkLower = ref(true);
+const checkPunctuation = ref(false);
+const passLength = ref(8);
+const output = ref('');
+
+/* 生成 */
+const onCalc = () => {
+  const num = '23456789';
+  const caps = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+  const lower = 'abcdefghjkmnpqrstuvwxyz';
+  const punctuation = '@#%';
+
+  const character = `${checkNum.value ? num : ''}${checkCaps.value ? caps : ''}${checkLower.value ? lower : ''}${checkPunctuation.value ? punctuation : ''}`;
+  if (!character.length) {
+    output.value = '';
+    return;
+  }
+
+  let password = '';
+  for (let i = 0; i < passLength.value; i += 1) {
+    password += character.charAt(Utils.randomWithin(character.length));
+  }
+  output.value = password;
+};
+</script>
 
 <style scoped>
 .button-warp{

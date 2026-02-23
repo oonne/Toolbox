@@ -1,3 +1,32 @@
+<template>
+  <div class="textarea-warp">
+    <textarea
+      class="textarea"
+      :class="textAreaClass"
+      :value="text"
+      :readonly="readonly"
+      :placeholder="placeholder"
+      @input="$emit('update:text', ($event.target as HTMLTextAreaElement).value)"
+    />
+    <div class="button-list">
+      <span
+        class="button"
+        @click="copy"
+      >复制</span>
+      <span
+        v-if="!readonly"
+        class="button"
+        @click="paste"
+      >粘贴</span>
+      <span
+        v-if="!readonly"
+        class="button"
+        @click="clear"
+      >清空</span>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
 import message from './message';
 
@@ -30,35 +59,6 @@ const clear = () => {
   emit('update:text', '');
 };
 </script>
-
-<template>
-  <div class="textarea-warp">
-    <textarea
-      class="textarea"
-      :class="textAreaClass"
-      :value="text"
-      :readonly="readonly"
-      :placeholder="placeholder"
-      @input="$emit('update:text', ($event.target as HTMLTextAreaElement).value)"
-    />
-    <div class="button-list">
-      <span
-        class="button"
-        @click="copy"
-      >复制</span>
-      <span
-        v-if="!readonly"
-        class="button"
-        @click="paste"
-      >粘贴</span>
-      <span
-        v-if="!readonly"
-        class="button"
-        @click="clear"
-      >清空</span>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .textarea-warp{

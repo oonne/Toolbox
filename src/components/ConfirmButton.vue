@@ -1,3 +1,13 @@
+<template>
+  <div
+    class="button"
+    :class="disable ? 'disable' : ''"
+    @click="onClick"
+  >
+    {{ text }}
+  </div>
+</template>
+
 <script setup lang="ts">
 const props = defineProps<{
   text: string;
@@ -13,16 +23,6 @@ const onClick = () => {
   emit('click');
 };
 </script>
-
-<template>
-  <div
-    class="button"
-    :class="disable ? 'disable' : ''"
-    @click="onClick"
-  >
-    {{ text }}
-  </div>
-</template>
 
 <style scoped>
 .button{

@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-import { enc } from 'crypto-js';
-
-const input = ref('');
-const output = ref('');
-
-/* 编码 */
-const onEncode = () => {
-  output.value = enc.Base64.stringify(enc.Utf8.parse(input.value));
-};
-</script>
-
 <template>
   <TextInput
     v-model:text.lazy="input"
@@ -32,6 +19,19 @@ const onEncode = () => {
     readonly
   />
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { enc } from 'crypto-js';
+
+const input = ref('');
+const output = ref('');
+
+/* 编码 */
+const onEncode = () => {
+  output.value = enc.Base64.stringify(enc.Utf8.parse(input.value));
+};
+</script>
 
 <style scoped>
 .button-warp{

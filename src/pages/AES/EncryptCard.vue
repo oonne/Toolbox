@@ -1,3 +1,44 @@
+<template>
+  <TextInput
+    v-model:text.lazy="secret"
+    text-area-class="min-height-6"
+    placeholder="秘钥"
+  />
+  <TextInput
+    v-show="mode !== 'ECB'"
+    v-model:text.lazy="iv"
+    text-area-class="min-height-6"
+    placeholder="初始化向量（IV）"
+  />
+  <TextInput
+    v-model:text.lazy="input"
+    placeholder="明文"
+  />
+  <div class="button-warp">
+    <SelectInput
+      v-model:selected="mode"
+      label="模式"
+      :options="modeSelectOptions"
+    />
+    <SelectInput
+      v-model:selected="pad"
+      label="填充"
+      :options="padSelectOptions"
+    />
+    <ConfirmButton
+      text="加密"
+      :disable="secret === '' || input === '' || (mode !== 'ECB' && iv === '')"
+      @click="onEncrypt"
+    />
+  </div>
+  <TextInput
+    v-if="!!output"
+    placeholder="密文"
+    :text="output"
+    readonly
+  />
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import CryptoJS from 'crypto-js';
@@ -80,47 +121,6 @@ const onEncrypt = () => {
 };
 
 </script>
-
-<template>
-  <TextInput
-    v-model:text.lazy="secret"
-    text-area-class="min-height-6"
-    placeholder="秘钥"
-  />
-  <TextInput
-    v-show="mode !== 'ECB'"
-    v-model:text.lazy="iv"
-    text-area-class="min-height-6"
-    placeholder="初始化向量（IV）"
-  />
-  <TextInput
-    v-model:text.lazy="input"
-    placeholder="明文"
-  />
-  <div class="button-warp">
-    <SelectInput
-      v-model:selected="mode"
-      label="模式"
-      :options="modeSelectOptions"
-    />
-    <SelectInput
-      v-model:selected="pad"
-      label="填充"
-      :options="padSelectOptions"
-    />
-    <ConfirmButton
-      text="加密"
-      :disable="secret === '' || input === '' || (mode !== 'ECB' && iv === '')"
-      @click="onEncrypt"
-    />
-  </div>
-  <TextInput
-    v-if="!!output"
-    placeholder="密文"
-    :text="output"
-    readonly
-  />
-</template>
 
 <style scoped>
 .button-warp {

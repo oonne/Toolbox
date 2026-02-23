@@ -1,21 +1,3 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue';
-import type { Tab } from '../types/type';
-
-const props = defineProps<{
-  tabs: Tab[];
-  default: string;
-}>();
-
-/* 导航栏 */
-const active = ref(props.default);
-const SelectTab = (key: string) => {
-  active.value = key;
-};
-
-const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.value));
-</script>
-
 <template>
   <div class="content-card">
     <!-- Tabs -->
@@ -41,6 +23,24 @@ const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.val
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref, computed } from 'vue';
+import type { Tab } from '../types/type';
+
+const props = defineProps<{
+  tabs: Tab[];
+  default: string;
+}>();
+
+/* 导航栏 */
+const active = ref(props.default);
+const SelectTab = (key: string) => {
+  active.value = key;
+};
+
+const activeTab = computed(() => props.tabs.find((tab) => tab.key === active.value));
+</script>
 
 <style scoped>
 .content-card{
