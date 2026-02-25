@@ -7,7 +7,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "generate-sitemap": "tsx script/generate-sitemap.ts"
+    "generate-sitemap": "tsx script/generate-sitemap.ts",
+    "deploy": "tsx script/deploy.ts",
+    "build-and-deploy": "pnpm run generate-sitemap && pnpm run build && pnpm run deploy"
   },
   "dependencies": {
     "@types/big.js": "^6.2.2",
