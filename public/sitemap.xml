@@ -11,6 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://oonne.com/urlencode</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://oonne.com/qrcode</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -52,6 +57,11 @@
   </url>
   <url>
     <loc>https://oonne.com/number-converter</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oonne.com/word-count</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
