@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import { CodeInspectorPlugin } from 'code-inspector-plugin';
 import vue from '@vitejs/plugin-vue';
-import sitemap from 'vite-plugin-sitemap';
 import { resolve } from 'path';
 
 // https://cn.vitejs.dev/config/
@@ -10,9 +9,6 @@ export default defineConfig({
     vue(),
     CodeInspectorPlugin({
       bundler: 'vite',
-    }),
-    sitemap({
-      hostname: 'https://oonne.com',
     }),
   ],
   resolve: {

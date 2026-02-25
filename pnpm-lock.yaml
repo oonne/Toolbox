@@ -44,9 +44,6 @@ importers:
       vite:
         specifier: ^5.4.11
         version: 5.4.11(@types/node@22.9.3)
-      vite-plugin-sitemap:
-        specifier: ^0.8.2
-        version: 0.8.2
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.2)
@@ -1677,9 +1674,6 @@ packages:
 
   vite-code-inspector-plugin@0.18.2:
     resolution: {integrity: sha512-MfHvere+71vL0BOposwgbHKZ8o973mYnMhGmU4uzOMt+gsmIjqHxcUkak9K2RMkRB1mG7/Gehvyy28SkUuhg3A==}
-
-  vite-plugin-sitemap@0.8.2:
-    resolution: {integrity: sha512-bqIw6NVOXg6je81lzX8Lm0vjf8/QSAp8di8fYQzZ3ZdVicOm8+6idBGALJiy1R1FiXNIK8rgORO6HBqXyHW+iQ==}
 
   vite@5.4.11:
     resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
@@ -3470,8 +3464,6 @@ snapshots:
       code-inspector-core: 0.18.2
     transitivePeerDependencies:
       - supports-color
-
-  vite-plugin-sitemap@0.8.2: {}
 
   vite@5.4.11(@types/node@22.9.3):
     dependencies:
