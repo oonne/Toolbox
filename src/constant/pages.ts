@@ -14,6 +14,10 @@ const pages: Page[] = [
     pageName: 'Base64',
   },
   {
+    path: '/urlencode',
+    pageName: 'UrlEncode',
+  },
+  {
     path: '/qrcode',
     pageName: 'QRcode',
   },
@@ -48,6 +52,10 @@ const pages: Page[] = [
   {
     path: '/number-converter',
     pageName: 'NumberConverter',
+  },
+  {
+    path: '/word-count',
+    pageName: 'WordCount',
   },
 ];
 

@@ -22,6 +22,11 @@ const featuresList: Features[] = [
     category: ['All', 'Encode'],
   },
   {
+    name: 'UrlEncode',
+    label: 'UrlEncode',
+    category: ['All', 'Encode'],
+  },
+  {
     name: 'AES',
     label: 'AES',
     category: ['All', 'Encrypt'],
@@ -49,6 +54,11 @@ const featuresList: Features[] = [
   {
     name: 'Password',
     label: '口令生成器',
+    category: ['All', 'Other'],
+  },
+  {
+    name: 'WordCount',
+    label: '字数统计',
     category: ['All', 'Other'],
   },
   {
