@@ -13,15 +13,12 @@
     />
     <ConfirmButton
       text="统计"
-      :disable="input===''"
+      :disable="input === ''"
       @click="onCount"
     />
   </div>
 
-  <div
-    v-if="count !== null"
-    class="result"
-  >
+  <div class="result">
     字符数：{{ count }}
   </div>
 </template>
@@ -31,13 +28,13 @@ import { ref } from 'vue';
 import type { SelectOption } from '@/types/type';
 
 const input = ref('');
-const count = ref<number | null>(null);
+const count = ref<number>(0);
 
 const chineseModeOptions: SelectOption[] = [
-  { value: '2', name: '中文=2字符' },
   { value: '1', name: '中文=1字符' },
+  { value: '2', name: '中文=2字符' },
 ];
-const chineseMode = ref('2');
+const chineseMode = ref('1');
 
 /* 统计字数：中文=2 时中文字符算2，否则每字符算1 */
 function getCount(text: string, mode: string): number {
@@ -55,18 +52,19 @@ const onCount = () => {
 </script>
 
 <style scoped>
-.button-warp{
+.button-warp {
   display: flex;
   justify-content: flex-end;
 }
+
 @media screen and (max-width: 680px) {
-  .button-warp{
+  .button-warp {
     flex-direction: column;
     align-items: end;
   }
 }
 
-.result{
+.result {
   margin: 8px 12px;
   padding: 12px;
   background-color: var(--input-background);
