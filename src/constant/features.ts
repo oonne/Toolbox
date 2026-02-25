@@ -27,6 +27,11 @@ const featuresList: Features[] = [
     category: ['All', 'Encode'],
   },
   {
+    name: 'Unicode',
+    label: 'Unicode',
+    category: ['All', 'Encode'],
+  },
+  {
     name: 'AES',
     label: 'AES',
     category: ['All', 'Encrypt'],

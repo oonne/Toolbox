@@ -18,6 +18,10 @@ const pages: Page[] = [
     pageName: 'UrlEncode',
   },
   {
+    path: '/unicode',
+    pageName: 'Unicode',
+  },
+  {
     path: '/qrcode',
     pageName: 'QRcode',
   },
