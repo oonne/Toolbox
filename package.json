@@ -6,7 +6,8 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate-sitemap": "tsx script/generate-sitemap.ts"
   },
   "dependencies": {
     "@types/big.js": "^6.2.2",
@@ -20,6 +21,7 @@
     "qrcode": "^1.5.4",
     "qrcode-parser": "^2.1.3",
     "scrypt-js": "^3.0.1",
+    "tsx": "^4.21.0",
     "vite": "^5.4.11",
     "vue": "^3.5.13",
     "vue-router": "^4.4.5"
@@ -38,6 +40,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "packageManager": "pnpm@9.1.0",
