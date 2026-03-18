@@ -9,7 +9,7 @@
       href="https://beian.miit.gov.cn"
       target="_blank"
       rel="nofollow"
-    >粤ICP备11053055号</a>
+    >粤ICP备11053055号-1</a>
     <span>&copy;</span>
     <a
       href="https://blog.oonne.com"
